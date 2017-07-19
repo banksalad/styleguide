@@ -8,6 +8,7 @@ Style Guide의 규칙을 전부 잘 숙지해야만 좋은 스타일의 코드�
 
 ## 목차
   1. [들여쓰기](#indentation)
+  1. [한 줄의 최대 길이](#max-characters)
   2. [주석](#comments)
     2. [TODOs](#todos)
     2. [Scaladoc](#scaladoc)
@@ -47,6 +48,10 @@ def matchOptInt(n: Option[Int]): Int = {
   }
 }
 ```
+
+<a name="max-characters"></a>
+## 한 줄의 최대 길이
+한 줄에 **최대 120개의 글자**만 있어야 합니다.
 
 <a name="comments"></a>
 ## 주석
