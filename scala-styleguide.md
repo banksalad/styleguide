@@ -9,10 +9,10 @@ Style Guide의 규칙을 전부 잘 숙지해야만 좋은 스타일의 코드�
 ## 목차
   1. [들여쓰기](#indentation)
   1. [한 줄의 최대 길이](#max-characters)
+  3. [이름 짓기](#naming)
   2. [주석](#comments)
     2. [TODOs](#todos)
     2. [Scaladoc](#scaladoc)
-  3. [이름 짓기](#naming)
   3. [비동기 프로그래밍](#async-programming)
     3. [Futures](#futures)
     3. [Monix](#monix)
