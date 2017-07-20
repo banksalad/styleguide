@@ -12,6 +12,7 @@ Style Guide의 규칙을 전부 잘 숙지해야만 좋은 스타일의 코드�
   2. [주석](#comments)
     2. [TODOs](#todos)
     2. [Scaladoc](#scaladoc)
+  3. [이름 짓기](#naming)
   3. [비동기 프로그래밍](#async-programming)
     3. [Futures](#futures)
     3. [Monix](#monix)
@@ -52,6 +53,25 @@ def matchOptInt(n: Option[Int]): Int = {
 <a name="max-characters"></a>
 ## 한 줄의 최대 길이
 한 줄에 **최대 120개의 글자**만 있어야 합니다.
+
+<a name="naming"></a>
+## 이름 짓기
+
+### 클래스, 트레이트, 함수, 변수 이름
+
+Camel case를 이용해서 이름을 지어주세요. **축약어(Json, Xml, Http 등)에 대해서도** camel case를 준수해주세요!
+
+```scala
+trait CamelCaseClass {
+  def myInt: Int
+  def myMethod: Unit
+  def myJson: Json
+}
+```
+
+### 패키지 이름
+
+패키지 이름은 영문 소문자로만 이루어져야 합니다.
 
 <a name="comments"></a>
 ## 주석
