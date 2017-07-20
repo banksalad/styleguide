@@ -91,10 +91,55 @@ def fibonacci(n: Int): Int = {
 <a name="async-programming"></a>
 ## 비동기 프로그래밍
 
-(TBD)
-
 <a name="futures"></a>
 ### Futures
+
+#### 기본적인 주의 사항
+
+  * `Future`는 생성 즉시 실행됩니다. 생성 과정 내부의 side effect는 한 번만 실행됩니다.
+
+```scala
+val future = Future {
+  println("Making future...")
+  0
+}
+
+future.foreach(println)
+future.foreach(println)
+
+/**
+ * [출력]
+ * Making future...
+ * 0
+ * 0
+ */
+```
+
+#### Future 생성하기
+  * 일반적으로 `Future`을 직접 생성할 일은 많이 없습니다. 직접 생성할 일이 있다면 `Future.apply`나 `Future.successful`을 이용하게 됩니다.
+
+  * `Future.apply`는 `ExecutionContext`를 필요로 합니다. `Future` 값을 생성할 때에도 비동기적인 작업을 스케줄링하기 때문입니다.
+
+  * 타입이 `Future`라고 생성 과정이 반드시 비동기적이라고 단언할 수 없습니다.
+
+```scala
+// this method is asynchronous
+def makeFuture(n: Int)(implicit ec: ExecutionContext): Future[Int] = {
+  Future {
+    blocking {  
+      fibonacci(n)
+    }
+  }
+}
+
+// this is synchronous
+// using Future is meaningless here
+def makeFuture(n: Int)(implicit ec: ExecutionContext): Future[Int] = {
+  // this is both BLOCKING and SYNCHRONOUS
+  val result = fibonacci(n)
+  Future { result }
+}
+```
 
   * 비동기적인 `Future`에서 동기적인 값을 얻는 것을 최대한 자제해주세요. Thread가 block됩니다.
 
@@ -108,9 +153,18 @@ def freeze(future: Future[Int]): Int = {
 }
 ```
 
+  * `Future.successful`은 이미 complete한 Future를 만듭니다.
+
+```scala
+def makeFuture(n: Int): Future[Int] =
+  Future.successful(n) // 이미 complete한 Future를 만들기 때문에 `ExecutionContext`가 필요 없음
+```
+
+#### 암묵적 ExecutionContext
+
   * 최대한 `scala.concurrent.ExecutionContext.Implicits.global`을 import하지 마세요. 메소드에 implicit하게 넘겨주는 것이 가장 권장되는 방법입니다.
 
-#### 비추천
+#### 안 좋은 구현
 ```scala
 /**
  * This is a BAD usecase
@@ -123,7 +177,7 @@ def mapFuture(future: Future[Int]): Future[Int] =
   future.map(_ * 2) // map의 implicit executor가 global implicit으로 resolve하면서, mapFuture의 `ExecutionContext`를 외부에서 주입하는 것이 불가능해집니다.
 ```
 
-#### 권장
+#### 좋은 구현
 ```scala
 /**
  * This is better
@@ -135,6 +189,7 @@ def mapFuture(future: Future[Int])(implicit ec: ExecutionContext): Future[Int] =
   future.map(_ * 2) // map의 implicit executor가 ec로 resolve됩니다.
 ```
 
+#### Composition
   * 다중 중첩된 `map`, `flatMap`은 for comprehension을 통해 더욱 간결한 코드로 바꿀 수 있습니다. 그러지 못할 것 같아도 할 수 있습니다.
 
 ```scala
