@@ -20,12 +20,11 @@
 
 > OK, enough writing about writing code; the code itself is much more interesting. Have fun!
 
-&mdash;[Google C++ Style Guide][google-c++]
-[google-c++]: https://google.github.io/styleguide/cppguide.html
+&mdash;[Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 
 ## 작성된 스타일 가이드
 
-- [Git Commit Message Style Guide](./git-styleguide.md)
+- [Git Commit Message Style Guide](git/README.md)
 
 ### 참고 자료
 
