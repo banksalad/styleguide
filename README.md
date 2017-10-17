@@ -1,16 +1,18 @@
 # Rainist Style Guide
 
-## 코드 저장소
+레이니스트 엔지니어링 팀이 지향하는 코드의 형태를 함께 논의하고 이를 문서로 정리해둔 스타일 가이드 코드 저장소입니다. 
 
-이 코드 저장소는 레이니스트 엔지니어링 팀이 지향하는 코드 스타일 가이드를 논의하고, 함께 만들어나가기 위해 개설되었습니다. 저희 팀이 지향하는 이 코드 저장소의 모습은 다음과 같습니다.
+정적인 문서 파일이 아닌 코드 저장소 형태로 스타일 가이드를 운영하는 것은 이를 논의의 공간으로 삼고자 하는데 가장 큰 뜻이 있습니다. 누구든 제안(issue 혹은 pull request)할 수 있으며 이에 대한 의견을 공유할 수 있도록 하기 위함입니다.
 
-1. 팀이 지향하는 바가 명확하게 드러나야 합니다.
-1. 항상 팀의 가장 최근의 생각들을 반영해야 합니다.
-1. 누구나 풀 리퀘스트를 통해 새로운 생각을 제안할 수 있어야 합니다.
+다음은 저희 레이니스트 엔지니어링 팀에서 작성한 언어별 스타일 가이드 목록입니다. 늘 저희 팀 최신의 생각을 반영하기 위해 노력 중이며, 작성된 스타일 가이드는 언제든 더 나은 형태로 변경될 수 있습니다.
 
-## 스타일 가이드
+- [Git Commit Message Style Guide](git/README.md)
 
-저희 레이니스트는 코드 작성이 편리한 스타일 가이드보다는, 코드 읽기에 더 용이한 스타일 가이드를 지향합니다. 코드 작성의 편리함이 가치 없다고 생각하는 게 아닙니다. 코드 작성이 편리한 스타일 가이드보다는 읽는 이가 더 잘 이해할 수 있도록 돕는 스타일 가이드를 더 가치 있게 여긴다는 뜻입니다.
+## 철학
+
+저희 레이니스트는 작성에 편리한 코드보다는 읽기에 더 쉬운 코드를 더 가치 있게 생각하며 이를 스타일 가이드에 충분히 반영하고자 합니다. 물론 저희 팀은 코드 작성의 편리함 또한 중요한 가치라 여기며 이를 위한 노력 역시 해나가고 있습니다.
+
+다음의 내용은 저희 팀이 스타일 가이드에 대한 철학을 정립하며 도움을 받았던 스타일 가이드이며 일부를 발췌하여 공유합니다. 
 
 > Use common sense and BE CONSISTENT.
 
@@ -22,11 +24,8 @@
 
 &mdash;[Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 
-## 작성된 스타일 가이드
-
-- [Git Commit Message Style Guide](git/README.md)
 
 ### 참고 자료
 
-- Google Style Guide: https://github.com/google/styleguide
-- Airbnb Ruby Style Guide: https://github.com/airbnb/ruby
+- [Google Style Guide](https://github.com/google/styleguide)
+- [Airbnb Ruby Style Guide](https://github.com/airbnb/ruby)
