@@ -1,0 +1,24 @@
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# Python settings with isort
+[*.py]
+charset = utf-8
+include_trailing_comma = true
+indent_style = space
+indent_size = 4
+line_length = 79
+multi_line_output = 3
+not_skip = __init__.py
+
+[Makefile]
+indent_style = tab
+
+[.travis.yml]
+indent_style = space
+indent_size = 2
