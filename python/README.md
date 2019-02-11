@@ -1,4 +1,4 @@
-# Python Style Guide 제안
+# Rainist Python Style Guide
 
 Rainist 구성원이 파이썬 코드를 작성할 때 참고할 스타일 가이드입니다.
 
