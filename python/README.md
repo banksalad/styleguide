@@ -154,3 +154,19 @@ amounts = list(map(labmda a: a.value, filter(None, amounts)))
 `requirements.txt`와 `requirements-dev.txt` 두 개로만 나눠 사용하고 프로젝트 최상위 경로에 위치시킵니다. Production 환경에 필요한 의존성들은 앞 파일에 넣고, lint, test, 로컬 개발에 필요한 의존성들(pytest, pylint, isort 등)은 뒤 파일에 넣습니다. 일부 패턴에선 `lint.txt`, `prod.txt`, `test.txt`등을 사용하지만 이는 프로덕션 환경을 위한 `requirements.txt`, 그 외 환경을 위한 `requirements-dev.txt` 두 파일로 커버 가능합니다.
 
 * [pipenv](https://github.com/pypa/pipenv): 의존성을 관리하기 위한 도구 중 하나입니다. 가상환경 생성, lock 파일을 통한 의존성 관리가 가능하고 `pipenv lock -r > requirements.txt`와 같이 하위호환성도 유지할 수 있습니다. "pipenv만 쓰자!"가 아닌 의존성 관리 도구 중 하나로 소개하고 개인의 판단에 따라 사용합니다.
+
+## Sanic
+
+### 204 No Content
+
+HTTP 응답 코드로 204<sub>no content</sub> 코드를 반환할 땐 아래처럼 사용합니다.
+
+```python
+from http import HTTPStatus
+
+from sanic.response import json
+
+@app.get('/')
+async def no_content(request):
+    return json(None, status=HTTPStatus.NO_CONTENT)
+```
