@@ -155,6 +155,10 @@ amounts = list(map(labmda a: a.value, filter(None, amounts)))
 
 * [pipenv](https://github.com/pypa/pipenv): 의존성을 관리하기 위한 도구 중 하나입니다. 가상환경 생성, lock 파일을 통한 의존성 관리가 가능하고 `pipenv lock -r > requirements.txt`와 같이 하위호환성도 유지할 수 있습니다. "pipenv만 쓰자!"가 아닌 의존성 관리 도구 중 하나로 소개하고 개인의 판단에 따라 사용합니다.
 
+### Package import 규칙
+
+같은 패키지 내에선 상대경로를, 다른 Package에 있는 것을 import 할 땐 절대경로를 사용합니다.
+
 ## Sanic
 
 ### 204 No Content
