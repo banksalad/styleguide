@@ -157,7 +157,7 @@ amounts = list(map(labmda a: a.value, filter(None, amounts)))
 
 ### Package import 규칙
 
-같은 패키지 내에선 상대경로를, 다른 Package에 있는 것을 import 할 땐 절대경로를 사용합니다.
+하위 패키지는 상대 경로를, 상위 패키지는 절대 경로를 이용해 import합니다.
 
 ## Sanic
 
