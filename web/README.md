@@ -486,10 +486,18 @@ enum Direction {
 
 ### Class Name
 
-되도록이면 간단한 한 단어로 네이밍하고, 2 단어 이상 시 Camel case를 따른다.
+PostCSS나 css.module & css in js을 사용하는 경우  
+되도록이면 간단한 한 단어로 네이밍하고, 2 단어 이상 시 Camel case를 따른다.  
+(Css module 사용 시 Camel case를 따르는 이유는 css를 object의 형태로 불러와 사용하기 때문이다.)
+
+```jsx
+<div className={ s.headerData }></div>
+```
+
+위와 같은 경우를 제외하고 다른 모든 경우에는 Kebab case를 따른다.
 
 ```html
-<div className={ s.headerData }></div>
+<div class='app-content'></div>
 ```
 
 
