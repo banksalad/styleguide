@@ -13,7 +13,7 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
 ## 목차
 - [General Rules](#general-rules)
   - [Trailing commas](#trailing-commas)
-  - [Eol last](#eol-last)
+  - [Files should end with a trailing newline](#files-should-end-with-a-trailing-newline)
   - [No Empty File](#no-empty-file)
   - [Line length 100](#line-length-100)
   - [Line break](#line-break)
@@ -36,7 +36,7 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
   - [Folder/File Name](#folderfile-name)
 - [File Import Rules](#file-import-rules)
   - [Absolute path import](#absolute-path-import)
-  - [Import sort](#import-sort)
+  - [Import order](#import-order)
   - [Style import](#style-import)
   - [Image import](#image-import)
 
@@ -94,7 +94,7 @@ var arr = [
 ```
 
 
-### Eol-last
+### Files should end with a trailing newline
 
 빈 파일이 아닌 경우 항상 코드의 마지막에 newline 한 줄이 있어야 한다.
 
@@ -132,7 +132,7 @@ if (thisIsLongVariableName !== HelloWorld.longName.longName && thisIsLongVariabl
 
 #### Conditional statements
 
-if문이나 while문 등의 조건식이 100자를 초과하는 등 지나치게 길어진다면 조건식을 변수에 담고 아래 예시와 같이 줄바꿈하여 사용한다.  
+조건식이 100자를 초과하거나 가독성이 떨어진다고 생각된다면, 조건식을 변수에 담고 아래 예시와 같이 줄바꿈하여 사용한다.  
 
 ```javascript
 // bad
@@ -193,7 +193,7 @@ if (true) {
 
 #### Ternary operator
 
-3항 연산자의 길이가 너무 길어져서 100자를 초과하는 경우 아래와 같이 줄바꿈한다.
+3항 연산자의 길이가 100자를 초과하거나 가독성이 떨어진다고 생각되는 경우 아래와 같이 줄바꿈한다.
 
 ```javascript
 // bad
@@ -208,7 +208,7 @@ let foo = isLongLongLongLongName
 
 #### Array & Object
 
-배열과 객체 선언이 너무 길어진다면 아래와 같이 줄바꿈한다.
+배열과 객체 선언이 길어져서 가독성이 떨어진다고 생각되는 경우 아래와 같이 줄바꿈한다.
 
 ```javascript
 // bad
@@ -232,7 +232,7 @@ const bar = {
 
 #### Function Parameters
 
-함수 정의 시 나열하는 parameter의 길이가 너무 길어서 100자를 초과한다면 아래와 같이 줄바꿈한다.
+함수 정의 시 나열하는 parameter 선언이 100자를 초과하거나 가독성이 떨어진다고 생각되는 경우 아래와 같이 줄바꿈한다.
 
 ```javascript
 // bad
@@ -384,16 +384,21 @@ let foo = 'hello' | undefined;
 
 ### Single quotes
 
-모든 경우에 single quotation('')을 사용한다. 다만, backtick(``)은 치환을 위해 허용된다.
+모든 경우에 single quotation(')을 사용한다. backtick(`)은 [Template literal](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)을 사용하는 경우에만 허용된다.  
 
 ```javascript
 // bad
 var double = "double";
-var unescaped = "a string containing 'single' quotes";
 
 // good
 var double = 'single';
 var unescaped = `back${x}tick`;
+```
+
+예외적으로, single quotes가 포함된 string의 경우에는 double quotes가 허용된다.
+
+```javascript
+var unescaped = "a string containing 'single' quotes";
 ```
 
 
@@ -527,7 +532,7 @@ dom element의 id 속성은 Camel case를 따른다.
 typescript의 interface 정의 시 Camel case형태로 하면서 첫 글자를 대문자로 한다.
 
 ```javascript
-interface FooConfig {
+interface ExampleProps {
   foo: num;
 }
 ```
@@ -557,7 +562,7 @@ icon-home.jpg
 
 ## File Import Rules
 
-### Import sort
+### Import order
 
 파일을 import할 때는 `npm packages/Node.js builtins`와 `절대 경로 import`, `상대 경로 import`를 group화하여 분류하고 사이 사이에 빈 줄로 구분한다.  
 
