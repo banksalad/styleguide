@@ -1,13 +1,14 @@
 # Rainist Web Style Guide
 
 Rainist 웹팀 구성원을 위한 전반적인 코드 스타일 가이드입니다.  
-JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을 포함하고 있습니다.
+JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을 포함하고 있습니다.  
 
 
-## 프로젝트 구성
+## 규칙 정의
 
-프로젝트 초기 세팅에 [web-template-pizza](https://github.com/Rainist/web-template-pizza) 템플릿을 사용합니다.  
-(이 템플릿은 [web-baedal](https://github.com/Rainist/web-baedal)을 통해 scaffolding할 수 있습니다.)
+- 스타일 가이드는 Template Repository에 정의된 eslint rule을 기반으로 작성되었습니다.
+- 스타일 가이드는 누구나 수정할 수 있으나 모든 웹팀 구성원들의 동의를 받아야 합니다.
+- 새로운 규칙 정의 시 스타일 가이드 문서에 먼저 반영하고 필요한 경우에 Template Repository의 eslint rule을 업데이트합니다.
 
 
 ## 목차
