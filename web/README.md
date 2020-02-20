@@ -52,23 +52,23 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
 ```javascript
 // bad
 var foo = {
-  bar: "baz",
-  qux: "quux"
+  bar: 'baz',
+  qux: 'quux'
 };
 
 // good
 var foo = {
-  bar: "baz",
-  qux: "quux",
+  bar: 'baz',
+  qux: 'quux',
 };
 ```
 
 ```javascript
 // bad
-var foo = { bar: "baz", qux: "quux", };
+var foo = { bar: 'baz', qux: 'quux', };
 
 // good
-var foo = { bar: "baz", qux: "quux" };
+var foo = { bar: 'baz', qux: 'quux' };
 ```
 
 ```javascript
@@ -232,7 +232,7 @@ const bar = {
 
 #### Function Parameters
 
-함수 정의 시 나열하는 parameter 선언이 100자를 초과하거나 가독성이 떨어진다고 생각되는 경우 아래와 같이 줄바꿈한다.
+함수의 parameter 선언이 100자를 초과하거나 가독성이 떨어진다고 생각되는 경우 아래와 같이 줄바꿈한다.
 
 ```javascript
 // bad
@@ -473,18 +473,29 @@ const COLOR_THEME = {
 
 ### Enum
 
-enum 정의 시 Camel case 형태로 하면서 첫 글자를 대문자로 한다.  
+enum 선언 시 알파벳 대문자와 언더바`_`를 사용한다.  
 enum으로 선언하는 각 constants는 대문자와 언더바`_`로 작성한다.
 
 ```javascript
-enum ApplicationEnv {
+enum APPLICATION_ENV {
   PRODUCTION = 'production',
   DEVELOPMENT = 'development',
 }
 
-enum Direction {
+enum DIRECTION {
   NORTH_WEST,
   SOUTH_EAST,
+}
+```
+
+
+### Interface
+
+typescript의 interface 선언 시 Camel case형태로 하면서 첫 글자를 대문자로 한다.
+
+```javascript
+interface ExampleProps {
+  foo: num;
 }
 ```
 
@@ -527,17 +538,6 @@ dom element의 id 속성은 Camel case를 따른다.
 ```
 
 
-### Interface
-
-typescript의 interface 정의 시 Camel case형태로 하면서 첫 글자를 대문자로 한다.
-
-```javascript
-interface ExampleProps {
-  foo: num;
-}
-```
-
-
 ### Folder/File Name
 
 폴더와 파일 이름은 하이픈`-`과 함께 Kebab case를 따르며 영문 소문자만 사용한다.  
@@ -570,33 +570,33 @@ icon-home.jpg
 
 ```javascript
 // before
-import React from "react";
-import Button from "../Button";
+import React from 'react";
+import Button from '../Button";
 
-import styles from "./styles.css";
-import type { User } from "../../types";
-import { getUser } from "../../api";
+import styles from './styles.css";
+import type { User } from '../../types";
+import { getUser } from '../../api';
 
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import { truncate, formatNumber } from "../../utils";
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { truncate, formatNumber } from '../../utils';
 
 // after
-import classnames from "classnames";
-import PropTypes from "prop-types";
-import React from "react";
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import { getUser } from "../../api";
-import type { User } from "../../types";
-import { formatNumber, truncate } from "../../utils";
-import Button from "../Button";
-import styles from "./styles.css";
+import { getUser } from '../../api';
+import type { User } from '../../types';
+import { formatNumber, truncate } from '../../utils';
+import Button from '../Button';
+import styles from './styles.css';
 ```
 
 
 ### Absolute path import
 
-모든 파일은 되도록이면 webpack alias 설정을 통해 절대 경로로 import한다.  
+2depth를 넘어가는 경우 반드시 webpack alias 설정을 통해 절대 경로로 import한다.  
 (webpack 설정 예시)
 ```javascript
   resolve: {
@@ -607,7 +607,7 @@ import styles from "./styles.css";
     // ...
   },
 ```
-```
+```javascript
 // good
 import { App } from '@/components';
 ```
@@ -627,5 +627,5 @@ import s from './styles.pcss';
 image file을 import할 때는 image를 표현하는 영어 단어를 Camel case로 표현한다.
 
 ```javascript
-import leftArrow from '../img/left-arrow.png';
+import leftArrow from '@/img/left-arrow.png';
 ```
