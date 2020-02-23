@@ -8,7 +8,7 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
 
 - 스타일 가이드는 Template Repository에 정의된 eslint rule을 기반으로 작성되었습니다.
 - 스타일 가이드는 누구나 수정할 수 있으나 모든 웹팀 구성원들의 동의를 받아야 합니다.
-- 새로운 규칙 정의 시 스타일 가이드 문서에 먼저 반영하고 필요한 경우에 Template Repository의 eslint rule을 업데이트합니다.
+- 새로운 규칙 정의 시 스타일 가이드 문서에 먼저 반영하고, 필요한 경우에 Template Repository의 eslint rule을 업데이트합니다.
 
 
 ## 목차
@@ -18,6 +18,11 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
   - [No Empty File](#no-empty-file)
   - [Line length 100](#line-length-100)
   - [Line break](#line-break)
+    - [Conditional statements](#conditional-statements)
+    - [If-else](#if-else)
+    - [Ternary operator](#ternary-operator)
+    - [Array & Object](#array-&-Object)
+    - [Function Parameters](#function-parameters)
   - [Semicolon](#semicolon)
   - [Indentation](#indentation)
   - [Padding lines between statements](#padding-lines-between-statements)
@@ -28,13 +33,14 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
   - [Function declaration](#function-declaration)
 - [Naming Rules](#naming-rules)
   - [Variables](#variables)
-  - [Constants](#constants)
-  - [Class Name](#class-name)
   - [Name attribute](#name-attribute)
   - [Id](#id)
-  - [Interface](#interface)
+  - [Constants](#constants)
   - [Enum](#enum)
+  - [Class Name](#class-name)
+  - [Interface](#interface)
   - [Folder/File Name](#folderfile-name)
+  - [Url path](#url-path)
 - [File Import Rules](#file-import-rules)
   - [Absolute path import](#absolute-path-import)
   - [Import order](#import-order)
@@ -48,7 +54,7 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
 ## General Rules
 ### Trailing commas
 
-마지막 element 또는 property가 다른 라인인 경우에만 trailing comma를 허용한다.
+마지막 element 또는 property가 다른 라인인 경우에만 `trailing comma`를 허용한다.
 
 ```javascript
 // bad
@@ -97,16 +103,16 @@ var arr = [
 
 ### Files should end with a trailing newline
 
-빈 파일이 아닌 경우 항상 코드의 마지막에 newline 한 줄이 있어야 한다.
+파일의 마지막엔 항상 newline 한 줄이 있어야 한다.
 
 ```javascript
 // bad
-function doSmth () {
+function doSomething () {
   var foo = 2;
 }
 
 // good
-function doSmth () {
+function doSomething () {
   var foo = 2;
 }\n
 ```
@@ -237,15 +243,15 @@ const bar = {
 
 ```javascript
 // bad
-function fooooo ('longlonglongName1', 'longlonglongName1', 'longlonglongName3', 'longlonglongName4') {
+function fooooo (longlonglongName1, longlonglongName2, longlonglongName3, longlonglongName4) {
 
 }
 // good
 function fooooo (
-  'longlonglongName1',
-  'longlonglongName1',
-  'longlonglongName3',
-  'longlonglongName4'
+  longlonglongName1,
+  longlonglongName2,
+  longlonglongName3,
+  longlonglongName4,
 ) {
 
 }
@@ -273,7 +279,7 @@ var foo = function () {
 
 ### Indentation
 
-2-space indentation을 따른다.
+모든 파일은 2-space indentation을 따른다.
 
 ```javascript
 // bad
@@ -294,7 +300,7 @@ function foo () {
 
 ### Padding lines between statements
 
-모든 statement와 return문 사이에는 1줄 이상의 blank line을 넣는다.
+모든 return문 위에는 1줄 이상의 blank line을 넣는다.
 
 ```javascript
 // bad
@@ -303,11 +309,20 @@ function foo () {
   return a;
 }
 
+function bar (a, b) {
+  return a + b;
+}
+
 // good
 function foo () {
   var a = 1;
 
   return a;
+}
+
+function bar (a, b) {
+
+  return a + b;
 }
 ```
 
@@ -411,7 +426,7 @@ var unescaped = "a string containing 'single' quotes";
 
 ```javascript
 // bad
-const foo = function() {
+const foo = function () {
 
 };
 
@@ -420,7 +435,7 @@ const foo = () =>{
 };
 
 // good
-const foo = function () {
+const foo = function() {
 
 };
 
@@ -434,12 +449,12 @@ const foo = () => {
 
 ```javascript
 // bad
-function foo() {
+function foo () {
 
 }
 
 // good
-function foo () {
+function foo() {
 
 }
 ```
@@ -452,16 +467,37 @@ function foo () {
 
 ### Variables
 
-Camel case를 따른다.
+변수는 Camel case를 따른다.
 
 ```javascript
 let targetName = 'hello';
 ```
 
 
+### Name attribute
+
+Input 태그의 name 속성은 Camel case를 따른다.
+
+```html
+<input
+  type='radio'
+  name='radioBtnGroup'
+/>
+```
+
+
+### Id
+
+Id는 Camel case를 따른다.
+
+```html
+<table id='myTable'></table>
+```
+
+
 ### Constants
 
-상수 선언 시 알파벳 대문자와 언더바`_`를 사용한다.
+상수는 Upper case를 따른다.
 
 ```javascript
 const MAX_LENGTH = 3;
@@ -474,25 +510,25 @@ const COLOR_THEME = {
 
 ### Enum
 
-enum 선언 시 알파벳 대문자와 언더바`_`를 사용한다.  
-enum으로 선언하는 각 constants는 대문자와 언더바`_`로 작성한다.
+enum은 Pascal case를 따른다.  
+enum으로 선언된 각 constants도 Pascal case를 따른다.
 
 ```javascript
-enum APPLICATION_ENV {
-  PRODUCTION = 'production',
-  DEVELOPMENT = 'development',
+enum ApplicationEnv {
+  Production = 'production',
+  Development = 'development',
 }
 
-enum DIRECTION {
-  NORTH_WEST,
-  SOUTH_EAST,
+enum Direction {
+  NorthWest,
+  SouthEase,
 }
 ```
 
 
 ### Interface
 
-typescript의 interface 선언 시 Camel case형태로 하면서 첫 글자를 대문자로 한다.
+typescript의 interface는 Pascal case를 따른다.
 
 ```javascript
 interface ExampleProps {
@@ -505,7 +541,7 @@ interface ExampleProps {
 
 PostCSS나 css.module & css in js을 사용하는 경우  
 되도록이면 간단한 한 단어로 네이밍하고, 2 단어 이상 시 Camel case를 따른다.  
-(Css module 사용 시 Camel case를 따르는 이유는 css를 object의 형태로 불러와 사용하기 때문이다.)
+(css module 사용 시 Camel case를 따르는 이유는 css를 object의 형태로 불러와 사용하기 때문이다.)
 
 ```jsx
 <div className={ s.headerData }></div>
@@ -515,27 +551,6 @@ PostCSS나 css.module & css in js을 사용하는 경우
 
 ```html
 <div class='app-content'></div>
-```
-
-
-### Name attribute
-
-Input radio나 checkbox 등의 name 속성은 언더바`_`를 사용한 Snake case를 따른다.
-
-```html
-<input
-  type='radio'
-  name='radio_btn_group'
-/>
-```
-
-
-### Id
-
-dom element의 id 속성은 Camel case를 따른다.
-
-```html
-<table id='myTable'></table>
 ```
 
 
@@ -555,6 +570,14 @@ view-model.tsx
 
 left-arrow.png
 icon-home.jpg
+```
+
+### Url path
+
+url path는 Kebab case를 따른다.
+
+```
+https://banksalad.com/cards/promotion/annual-fee
 ```
 
 
@@ -616,7 +639,7 @@ import { App } from '@/components';
 
 ### Style import
 
-style을 위한 css, 혹은 scss, pcss 파일을 Import할 때는 소문자 s를 사용한다.
+styleSheet를 Import할 때는 소문자 s를 사용한다.
 
 ```javascript
 import s from './styles.pcss';
