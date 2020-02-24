@@ -6,7 +6,7 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
 
 ## 규칙 정의
 
-- 스타일 가이드는 Template Repository에 정의된 eslint rule을 기반으로 작성되었습니다.
+- 스타일 가이드는 사내에서 사용하고 있는 Template Repository에 정의된 eslint rule을 기반으로 작성되었습니다.
 - 스타일 가이드는 누구나 수정할 수 있으나 모든 웹팀 구성원들의 동의를 받아야 합니다.
 - 새로운 규칙 정의 시 스타일 가이드 문서에 먼저 반영하고, 필요한 경우에 Template Repository의 eslint rule을 업데이트합니다.
 
@@ -110,7 +110,8 @@ var arr = [
 function doSomething () {
   var foo = 2;
 }
-
+```
+```javascript
 // good
 function doSomething () {
   var foo = 2;
@@ -155,13 +156,13 @@ if (condition) {
 }
 
 // bad
-while (variableName + variableName2 >= variableName3 || variableName + variableName2 <= variableName4) {
+while (HelloWorld.longName.longName >= thisIsLongLongVariableName || thisIsLongLongVariableNameTwo) {
 
 };
 
 // good
-let condition2 = (variableName + variableName2) >= variableName3
-  || (variableName + variableName2) <= variableName4;
+let condition2 = HelloWorld.longName.longName >= thisIsLongLongVariableName
+  || thisIsLongLongVariableNameTwo;
 
 while (condition2) {
 
@@ -170,7 +171,7 @@ while (condition2) {
 
 #### If-else
 
-if-else문은 1줄만 작성하더라도 가독성을 위해 curly braces`{}`를 생략하지 않으며, 다음과 같이 줄바꿈을 한다.
+if-else문은 1줄만 작성하더라도 가독성을 위해 괄호(curly braces: `{}`)를 생략하지 않으며, 다음과 같이 줄바꿈을 한다.
 
 ```javascript
 // bad
@@ -348,7 +349,7 @@ var arr = [1, 2];
 
 ### Object curly spacing
 
-Object literal이나 destructuring assignments, import/export specifiers에 쓰이는 괄호 안에 space를 꼭 넣는다.  
+Object literal이나 destructuring assignments, import/export specifiers에 쓰이는 괄호(curly braces: `{}`) 안에 space를 꼭 넣는다.  
 다만 괄호 안의 괄호끼리는 space를 제거한다.
 
 ```javascript
@@ -382,6 +383,16 @@ var arr = [ { foo: 1 }, { bar: 2 } ];
 var arr = [{ foo: 1 }, { bar: 2 }];
 ```
 
+Template literals의 경우 space를 허용하지 않는다.
+
+```javascript
+// bad
+var string = `example ${ foo }`;
+
+// good
+var string = `example ${foo}`;
+```
+
 
 ### Spacing around infix operators
 
@@ -411,10 +422,18 @@ var double = 'single';
 var unescaped = `back${x}tick`;
 ```
 
-예외적으로, single quotes가 포함된 string의 경우에는 double quotes가 허용된다.
+예외적으로 single quotes가 포함된 string의 경우에는 double quotes가 허용된다.
 
 ```javascript
 var unescaped = "a string containing 'single' quotes";
+```
+
+예외적으로 JSON의 경우에는 반드시 double quotes를 사용한다.
+```json
+{
+  "foo": "string",
+  "bar": true
+}
 ```
 
 
@@ -602,11 +621,11 @@ import type { User } from '../../types";
 import { getUser } from '../../api';
 
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { truncate, formatNumber } from '../../utils';
 
 // after
-import classnames from 'classnames';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
