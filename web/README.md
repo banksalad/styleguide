@@ -13,9 +13,12 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
 
 ## 목차
 - [General Rules](#general-rules)
-  - [Trailing commas](#trailing-commas)
   - [Files should end with a trailing newline](#files-should-end-with-a-trailing-newline)
   - [No Empty File](#no-empty-file)
+  - [Indentation](#indentation)
+  - [Single quotes](#single-quotes)
+- [JavaScript Rules](#javascript-rules)
+  - [Trailing commas](#trailing-commas)
   - [Line length 100](#line-length-100)
   - [Line break](#line-break)
     - [Conditional statements](#conditional-statements)
@@ -24,20 +27,21 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
     - [Array & Object](#array-&-Object)
     - [Function Parameters](#function-parameters)
   - [Semicolon](#semicolon)
-  - [Indentation](#indentation)
   - [Padding lines between statements](#padding-lines-between-statements)
   - [Comma spacing](#comma-spacing)
   - [Object curly spacing](#object-curly-spacing)
   - [Spacing around infix operators](#spacing-around-infix-operators)
-  - [Single quotes](#single-quotes)
   - [Function declaration](#function-declaration)
+- [CSS Rules](#css-rules)
+  - [CSS Shorthand](#css-shorthand)
+  - [CSS Sort](#css-sort)
 - [Naming Rules](#naming-rules)
   - [Variables](#variables)
   - [Name attribute](#name-attribute)
   - [Id](#id)
+  - [Class Name](#class-name)
   - [Constants](#constants)
   - [Enum](#enum)
-  - [Class Name](#class-name)
   - [Interface](#interface)
   - [Folder/File Name](#folderfile-name)
   - [Url path](#url-path)
@@ -48,10 +52,96 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
   - [Image import](#image-import)
 
 
-----------------------------
+----------------------
 
 
 ## General Rules
+### Files should end with a trailing newline
+
+파일의 마지막엔 항상 newline 한 줄이 있어야 한다.
+
+```javascript
+// bad
+function doSomething () {
+  var foo = 2;
+}
+```
+```javascript
+// good
+function doSomething () {
+  var foo = 2;
+}\n
+```
+
+
+### No Empty File
+
+내용이 없는 빈 파일은 commit을 하지 않는다.
+
+
+### Indentation
+
+모든 파일은 2-space indentation을 따른다.
+
+```javascript
+// bad
+function foo () {
+    if (true) {
+        var baz = 1;
+    }
+}
+
+// good
+function foo () {
+  if (true) {
+    var baz = 1;
+  }
+}
+```
+
+
+### Single quotes
+
+모든 경우에 single quotation(')을 사용한다. backtick(`)은 [Template literal](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)을 사용하는 경우에만 허용된다.  
+
+```javascript
+// bad
+var double = "double";
+
+// good
+var double = 'single';
+var unescaped = `back${x}tick`;
+```
+
+```html
+<!-- bad -->
+<div id="myTable"><div>
+
+<!-- good -->
+<div id='myTable'><div>
+```
+
+
+예외적으로 single quotes가 포함된 string의 경우에는 double quotes가 허용된다.
+
+```javascript
+var unescaped = "a string containing 'single' quotes";
+```
+
+예외적으로 JSON의 경우에는 반드시 double quotes를 사용한다.
+```json
+{
+  "foo": "string",
+  "bar": true
+}
+```
+
+
+----------------------
+
+
+
+## JavaScript Rules
 ### Trailing commas
 
 마지막 element 또는 property가 다른 라인인 경우에만 `trailing comma`를 허용한다.
@@ -99,29 +189,6 @@ var arr = [
   2,
 ];
 ```
-
-
-### Files should end with a trailing newline
-
-파일의 마지막엔 항상 newline 한 줄이 있어야 한다.
-
-```javascript
-// bad
-function doSomething () {
-  var foo = 2;
-}
-```
-```javascript
-// good
-function doSomething () {
-  var foo = 2;
-}\n
-```
-
-
-### No Empty File
-
-내용이 없는 빈 파일은 commit을 하지 않는다.
 
 
 ### Line length 100
@@ -278,27 +345,6 @@ var foo = function () {
 ```
 
 
-### Indentation
-
-모든 파일은 2-space indentation을 따른다.
-
-```javascript
-// bad
-function foo () {
-    if (true) {
-        var baz = 1;
-    }
-}
-
-// good
-function foo () {
-  if (true) {
-    var baz = 1;
-  }
-}
-```
-
-
 ### Padding lines between statements
 
 모든 return문 위에는 1줄 이상의 blank line을 넣는다.
@@ -409,34 +455,6 @@ let foo = 'hello' | undefined;
 ```
 
 
-### Single quotes
-
-모든 경우에 single quotation(')을 사용한다. backtick(`)은 [Template literal](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)을 사용하는 경우에만 허용된다.  
-
-```javascript
-// bad
-var double = "double";
-
-// good
-var double = 'single';
-var unescaped = `back${x}tick`;
-```
-
-예외적으로 single quotes가 포함된 string의 경우에는 double quotes가 허용된다.
-
-```javascript
-var unescaped = "a string containing 'single' quotes";
-```
-
-예외적으로 JSON의 경우에는 반드시 double quotes를 사용한다.
-```json
-{
-  "foo": "string",
-  "bar": true
-}
-```
-
-
 ### Function declaration
 
 함수 선언 시 다음과 같은 규칙을 따르며, 같은 프로젝트 내에서 함수 표현식과 함수 선언식을 섞어 쓰지 않는다.
@@ -482,8 +500,41 @@ function foo() {
 ----------------------
 
 
-## Naming Rules
+## CSS Rules
+### CSS Shorthand
 
+간결한 CSS 작성을 위해 CSS Shorthand 사용을 지향한다.
+
+```css
+// bad
+.example {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ddd;
+}
+
+// good
+.example {
+  border: 1px solid #ddd;
+}
+```
+
+
+### CSS Sort
+
+CSS 속성 정렬은 다음과 같은 순서를 따른다.
+
+1. Layout: position, float, clear, display
+2. Box Model: width, height, margin, padding
+3. Typography: font-size, font-family, text-align, text-transform
+4. Visual: color, background, border, box-shadow
+5. etc: cursor, overflow, z-index
+
+
+----------------------
+
+
+## Naming Rules
 ### Variables
 
 변수는 Camel case를 따른다.
@@ -495,7 +546,7 @@ let targetName = 'hello';
 
 ### Name attribute
 
-Input 태그의 name 속성은 Camel case를 따른다.
+태그의 name 속성은 Camel case를 따른다.
 
 ```html
 <input
@@ -507,10 +558,23 @@ Input 태그의 name 속성은 Camel case를 따른다.
 
 ### Id
 
-Id는 Camel case를 따른다.
+태그의 id 속성은 Camel case를 따른다.
 
 ```html
 <table id='myTable'></table>
+```
+
+
+### Class Name
+
+Class name은 Camel case를 따른다.  
+
+```jsx
+<div className={ s.headerData }></div>
+```
+
+```html
+<div class='appContent'></div>
 ```
 
 
@@ -529,47 +593,30 @@ const COLOR_THEME = {
 
 ### Enum
 
-enum은 Pascal case를 따른다.  
-enum으로 선언된 각 constants도 Pascal case를 따른다.
+Enum은 Upper case를 따른다.  
+Enum으로 선언된 각 constant도 Upper case를 따른다.
 
 ```javascript
-enum ApplicationEnv {
-  Production = 'production',
-  Development = 'development',
+enum APPLICATION_ENV {
+  PRODUCTION = 'production',
+  DEVELOPMENT = 'development',
 }
 
-enum Direction {
-  NorthWest,
-  SouthEase,
+enum DIRECTION {
+  NORTH_WEST,
+  SOUTE_EAST,
 }
 ```
 
 
 ### Interface
 
-typescript의 interface는 Pascal case를 따른다.
+Interface는 Pascal case를 따른다.
 
 ```javascript
 interface ExampleProps {
   foo: num;
 }
-```
-
-
-### Class Name
-
-PostCSS나 css.module & css in js을 사용하는 경우  
-되도록이면 간단한 한 단어로 네이밍하고, 2 단어 이상 시 Camel case를 따른다.  
-(css module 사용 시 Camel case를 따르는 이유는 css를 object의 형태로 불러와 사용하기 때문이다.)
-
-```jsx
-<div className={ s.headerData }></div>
-```
-
-위와 같은 경우를 제외하고 다른 모든 경우에는 Kebab case를 따른다.
-
-```html
-<div class='app-content'></div>
 ```
 
 
@@ -604,7 +651,6 @@ https://banksalad.com/cards/promotion/annual-fee
 
 
 ## File Import Rules
-
 ### Import order
 
 파일을 import할 때는 `npm packages/Node.js builtins`와 `절대 경로 import`, `상대 경로 import`를 group화하여 분류하고 사이 사이에 빈 줄로 구분한다.  
