@@ -6,9 +6,9 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
 
 ## 규칙 정의
 
-- 스타일 가이드는 사내에서 사용하고 있는 Template Repository에 정의된 eslint rule을 기반으로 작성되었습니다.
+- 스타일 가이드는 사내에서 사용하고 있는 Template repository에 정의된 eslint rule을 기반으로 작성되었습니다.
 - 스타일 가이드는 누구나 수정할 수 있으나 모든 웹팀 구성원들의 동의를 받아야 합니다.
-- 새로운 규칙 정의 시 스타일 가이드 문서에 먼저 반영하고, 필요한 경우에 Template Repository의 eslint rule을 업데이트합니다.
+- 새로운 규칙 정의 시 스타일 가이드 문서에 먼저 반영하고, 필요한 경우에 Template repository의 eslint rule을 업데이트합니다.
 
 
 ## 목차
@@ -503,7 +503,7 @@ function foo() {
 ## CSS Rules
 ### CSS Shorthand
 
-간결한 CSS 작성을 위해 CSS Shorthand 사용을 지향한다.
+간결한 CSS 작성을 위해 CSS shorthand 사용을 지향한다.
 
 ```css
 // bad
@@ -685,8 +685,9 @@ import styles from './styles.css';
 
 ### Absolute path import
 
-2depth를 넘어가는 경우 반드시 webpack alias 설정을 통해 절대 경로로 import한다.  
+2-depth를 넘어가는 경우 반드시 webpack alias 설정을 통해 절대 경로로 import한다.  
 (webpack 설정 예시)
+
 ```javascript
   resolve: {
     // ...
@@ -704,7 +705,7 @@ import { App } from '@/components';
 
 ### Style import
 
-styleSheet를 Import할 때는 소문자 s를 사용한다.
+Style sheet를 import할 때는 소문자 s를 사용한다.
 
 ```javascript
 import s from './styles.pcss';
