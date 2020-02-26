@@ -62,13 +62,13 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
 
 ```javascript
 // bad
-function doSomething () {
+function doSomething() {
   var foo = 2;
 }
 ```
 ```javascript
 // good
-function doSomething () {
+function doSomething() {
   var foo = 2;
 }\n
 ```
@@ -85,14 +85,14 @@ function doSomething () {
 
 ```javascript
 // bad
-function foo () {
+function foo() {
     if (true) {
         var baz = 1;
     }
 }
 
 // good
-function foo () {
+function foo() {
   if (true) {
     var baz = 1;
   }
@@ -311,11 +311,11 @@ const bar = {
 
 ```javascript
 // bad
-function fooooo (longlonglongName1, longlonglongName2, longlonglongName3, longlonglongName4) {
+function fooooo(longlonglongName1, longlonglongName2, longlonglongName3, longlonglongName4) {
 
 }
 // good
-function fooooo (
+function fooooo(
   longlonglongName1,
   longlonglongName2,
   longlonglongName3,
@@ -351,23 +351,23 @@ var foo = function () {
 
 ```javascript
 // bad
-function foo () {
+function foo() {
   var a = 1;
   return a;
 }
 
-function bar (a, b) {
+function bar(a, b) {
   return a + b;
 }
 
 // good
-function foo () {
+function foo() {
   var a = 1;
 
   return a;
 }
 
-function bar (a, b) {
+function bar(a, b) {
 
   return a + b;
 }
@@ -396,7 +396,7 @@ var arr = [1, 2];
 ### Object curly spacing
 
 Object literal이나 destructuring assignments, import/export specifiers에 쓰이는 괄호(curly braces: `{}`) 안에 space를 꼭 넣는다.  
-다만 괄호 안의 괄호끼리는 space를 제거한다.
+다만 괄호가 중복되는 경우 space를 제거한다.
 
 ```javascript
 // bad
@@ -524,11 +524,102 @@ function foo() {
 
 CSS 속성 정렬은 다음과 같은 순서를 따른다.
 
-1. Layout: position, float, clear, display
-2. Box Model: width, height, margin, padding
-3. Typography: font-size, font-family, text-align, text-transform
-4. Visual: color, background, border, box-shadow
-5. etc: cursor, overflow, z-index
+1. PostCSS
+  - composes
+  - @util
+2. Positioning
+  - position
+  - z-index
+  - top
+  - bottom
+  - left
+  - right
+  - trasnform
+3. Layout
+  - float
+  - clear
+4. Display
+  - display
+  - flex-direction
+  - flex-wrap
+  - justify-content
+  - align-content
+  - align-items
+  - order
+  - flex-grow
+  - flex-shrink
+  - flex-basis
+  - align-self
+5. Visibility
+  - visibility
+  - overflow
+  - clip
+6. Box model
+이 범주에 속하는 속성들은 밖에서 안으로 향하는 순서(From outside in)로 나열한다.  - 
+원래대로라면 border 속성도 Box model 범주에 포함시켜야하겠지만, border 영역은 두께만 단독으로 선언하지 않고 색상(Color)을 함께 선언하는 경우가 대부분이므로 Color 범주로 포함시킨다.
+  - box-sizing
+  - width
+  - min-width
+  - max-width
+  - height
+  - min-height
+  - max-height
+  - margin
+  - padding
+7. Color
+  - color
+  - border
+  - border-radius
+  - background
+  - box-shadow
+  - opacity
+8. Table
+  - table-layout
+  - empty-cells
+  - caption-side
+  - border-spacing
+  - border-collapse
+  - list-style
+  - list-style-position
+  - list-style-type
+  - list-style-image
+9. Text
+  - font
+  - font-family
+  - font-size
+  - font-weight
+  - font-style
+  - font-variant
+  - font-size-adjust
+  - font-stretch
+  - font-effect
+  - font-emphasize
+  - font-emphasize-position
+  - font-emphasize-style
+  - font-smooth
+  - line-height
+  - letter-spacing
+  - white-space
+  - word-break
+  - text-overflow
+10. Animation
+  - transition
+  - animation
+11. Others
+  - cursor
+  - outline
+  - outline-width
+  - outline-style
+  - outline-color
+  - outline-offset
+12. Pseudo elements
+  - :hover
+  - :focus
+  - :active
+  - :first-child
+  - :last-child
+  - ::before
+  - ::after
 
 
 ----------------------
