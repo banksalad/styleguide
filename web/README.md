@@ -555,7 +555,7 @@ CSS 속성 정렬은 다음과 같은 순서를 따른다.
   - overflow
   - clip
 6. Box model
-이 범주에 속하는 속성들은 밖에서 안으로 향하는 순서(From outside in)로 나열한다.  - 
+이 범주에 속하는 속성들은 밖에서 안으로 향하는 순서(From outside in)로 나열한다.  
 원래대로라면 border 속성도 Box model 범주에 포함시켜야하겠지만, border 영역은 두께만 단독으로 선언하지 않고 색상(Color)을 함께 선언하는 경우가 대부분이므로 Color 범주로 포함시킨다.
   - box-sizing
   - width
