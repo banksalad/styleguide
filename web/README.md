@@ -333,13 +333,13 @@ function fooooo(
 ```javascript
 // bad
 var name = 'hello'
-var foo = function () {
+var foo = function() {
   var bar = 'world'
 }
 
 // good
 var name = 'hello';
-var foo = function () {
+var foo = function() {
   var bar = 'world';
 };
 ```
