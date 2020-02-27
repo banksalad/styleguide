@@ -524,10 +524,10 @@ function foo() {
 
 CSS 속성 정렬은 다음과 같은 순서를 따른다.
 
-1. PostCSS
+- PostCSS
   - composes
   - @util
-2. Positioning
+- Positioning
   - position
   - z-index
   - top
@@ -535,10 +535,10 @@ CSS 속성 정렬은 다음과 같은 순서를 따른다.
   - left
   - right
   - trasnform
-3. Layout
+- Layout
   - float
   - clear
-4. Display
+- Display
   - display
   - flex-direction
   - flex-wrap
@@ -550,13 +550,11 @@ CSS 속성 정렬은 다음과 같은 순서를 따른다.
   - flex-shrink
   - flex-basis
   - align-self
-5. Visibility
+- Visibility
   - visibility
   - overflow
   - clip
-6. Box model
-이 범주에 속하는 속성들은 밖에서 안으로 향하는 순서(From outside in)로 나열한다.  
-원래대로라면 border 속성도 Box model 범주에 포함시켜야하겠지만, border 영역은 두께만 단독으로 선언하지 않고 색상(Color)을 함께 선언하는 경우가 대부분이므로 Color 범주로 포함시킨다.
+- Box model
   - box-sizing
   - width
   - min-width
@@ -566,14 +564,14 @@ CSS 속성 정렬은 다음과 같은 순서를 따른다.
   - max-height
   - margin
   - padding
-7. Color
+- Color
   - color
   - border
   - border-radius
   - background
   - box-shadow
   - opacity
-8. Table
+- Table
   - table-layout
   - empty-cells
   - caption-side
@@ -583,7 +581,7 @@ CSS 속성 정렬은 다음과 같은 순서를 따른다.
   - list-style-position
   - list-style-type
   - list-style-image
-9. Text
+- Text
   - font
   - font-family
   - font-size
@@ -602,17 +600,17 @@ CSS 속성 정렬은 다음과 같은 순서를 따른다.
   - white-space
   - word-break
   - text-overflow
-10. Animation
+- Animation
   - transition
   - animation
-11. Others
+- Others
   - cursor
   - outline
   - outline-width
   - outline-style
   - outline-color
   - outline-offset
-12. Pseudo elements
+- Pseudo elements
   - :hover
   - :focus
   - :active
@@ -620,6 +618,10 @@ CSS 속성 정렬은 다음과 같은 순서를 따른다.
   - :last-child
   - ::before
   - ::after
+
+
+> Box model 범주에 속하는 속성들은 밖에서 안으로 향하는 순서(From outside in)로 나열한다.  
+> 원래대로라면 border 속성도 Box model 범주에 포함시켜야하겠지만, border 영역은 두께만 단독으로 선언하지 않고 색상(Color)을 함께 선언하는 경우가 대부분이므로 Color 범주로 포함시킨다.
 
 
 ----------------------
