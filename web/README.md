@@ -347,7 +347,7 @@ var foo = function() {
 
 ### Padding lines between statements
 
-모든 return문 위에는 1줄 이상의 blank line을 넣는다.
+content가 있는 경우에는 statement와 return문 사이에 1줄의 blank line을 넣는다.
 
 ```javascript
 // bad
@@ -357,6 +357,7 @@ function foo() {
 }
 
 function bar(a, b) {
+
   return a + b;
 }
 
@@ -368,7 +369,6 @@ function foo() {
 }
 
 function bar(a, b) {
-
   return a + b;
 }
 ```
