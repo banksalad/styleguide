@@ -45,6 +45,7 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
   - [Interface](#interface)
   - [Folder/File Name](#folderfile-name)
   - [Url path](#url-path)
+  - [Abbreviation](#abbreviation)
 - [File Import Rules](#file-import-rules)
   - [Absolute path import](#absolute-path-import)
   - [Import order](#import-order)
@@ -737,6 +738,24 @@ url path는 Kebab case를 따른다.
 
 ```
 https://banksalad.com/cards/promotion/annual-fee
+```
+
+### Abbreviation
+
+변수나 함수명을 지을 때 약자는 대문자로 표기한다.
+
+```javascript
+// bad
+const sampleUrl = 'https://banksalad.com/';
+const sendUiEvent = function() {
+
+};
+
+// good
+const sampleURL = 'https://banksalad.com/';
+const sendUIEvent = function() {
+
+};
 ```
 
 
