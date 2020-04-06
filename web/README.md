@@ -277,9 +277,9 @@ let foo = isLongLongLongLongName ? 'hellohellohellohellohellohello' : 'worldworl
 
 // good
 let foo = isTrue ? 'hello' : 'world';
-let foo = isLongLongLongLongName
-  ? 'hellohellohellohellohellohello'
-  : 'worldworldworldhellohellohello';
+let foo = isLongLongLongLongName ? 
+  'hellohellohellohellohellohello' : 
+  'worldworldworldhellohellohello';
 ```
 
 #### Array & Object
