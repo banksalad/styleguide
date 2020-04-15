@@ -1,4 +1,4 @@
-# Rainist Android Style Guide
+# Android Style Guide
 
 Style Guide for Android Developers
 
