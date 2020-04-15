@@ -50,7 +50,7 @@ Function is/does...
 
 - does not throw Exception
 - is O(1) complexity
-- is Cheap, or computation result is being cached
+- is cheap or its computation result is being cached
 - is idempotent operation
 
 ```kotlin
