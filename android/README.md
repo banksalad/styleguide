@@ -46,7 +46,7 @@ val rainist = Rainist(
 
 Argument 없는 function이 다음 조건을 모두 만족한다면, function 대신 property를 사용합니다.
 
-Function is/does...
+If a function is/does...
 
 - does not throw Exception
 - is O(1) complexity
@@ -178,7 +178,12 @@ Element Closing Tag는 마지막 attribute 다음 줄에 추가합니다.
 ```
 
 
+
 ## Java
 
-Use Default StyleGuide shipped with AndroidStudio
-(Because we don't use Java. Use Kotlin. Kotlin is Good)
+We don't. Use Default StyleGuide shipped with AndroidStudio
+
+
+
+![Don't even think about it](https://media.giphy.com/media/YT2TjJ8K4AaLSRkdO5/giphy.gif)
+
