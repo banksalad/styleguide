@@ -1,6 +1,6 @@
 # Rainist Android Style Guide
 
-Style Guide for Rainist Android Developers
+Style Guide for Android Developers
 
 
 
