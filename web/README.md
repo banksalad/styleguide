@@ -20,6 +20,7 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
 - [JavaScript Rules](#javascript-rules)
   - [Trailing commas](#trailing-commas)
   - [Line length 100](#line-length-100)
+  - [No multiple empty lines](#no-multiple-empty-lines)
   - [Line break](#line-break)
     - [Conditional statements](#conditional-statements)
     - [If-else](#if-else)
@@ -48,6 +49,7 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
   - [Abbreviation](#abbreviation)
 - [File Import Rules](#file-import-rules)
   - [Absolute path import](#absolute-path-import)
+  - [Newline after import](#newline-after-import)
   - [Import order](#import-order)
   - [Style import](#style-import)
   - [Image import](#image-import)
@@ -203,6 +205,26 @@ if (thisIsLongVariableName !== HelloWorld.longName.longName && thisIsLongVariabl
 }
 ```
 
+### No multiple empty lines
+
+코드내에서 한 줄 이상의 여백을 허용하지 않습니다. 
+
+```javascript
+// bad
+var a = 1;
+
+
+var b = 2;
+
+// good
+var a = 1;
+
+var b = 2;
+
+// good
+var a = 1;
+var b = 2;
+```
 
 ### Line break
 
@@ -794,6 +816,26 @@ import Button from '../Button';
 import styles from './styles.css';
 ```
 
+### Newline after import
+
+마지막 import 파일 이후에 에는 항상 1줄의 여백을 넣습니다.
+
+```javascript
+// bad
+import { App } from '@/components';
+
+
+var a = 1;
+
+// bad
+import { App } from '@/components';
+var a = 1;
+
+// good
+import { App } from '@/components';
+
+var a = 1;
+```   
 
 ### Absolute path import
 
