@@ -73,7 +73,7 @@ fun filterTextViews(views: List<View>): List<View> {
 
 ### Network Request / Response
 
-`:data` 모듈의 Network Response 객체는 다음 구조로 작성되어야 합니다.
+`:data` 레이어의 Network Response 객체는 다음 구조로 작성되어야 합니다.
 
 ```kotlin
 data class SampleResponse(
@@ -93,7 +93,7 @@ data class SampleResponse(
 ### enum class
 
 Response에 enum이 포함되어 있다면, `value` property를 만들고, Response 값으로 초기화 합니다.
-Raw String을 Mapping해주는 Extension Function을 `:data` layer에 추가합니다.
+Raw String을 Mapping해주는 Extension Function을 `:data` 레이어에 추가합니다.
 
 ```kotlin
 // Entity Layer
@@ -131,18 +131,52 @@ fun DeletedStatus.from(rawValue: String): DeletedStatus =
 
   
 
-### if / else / when
+### if / else
 
-- `if` `else` 다음 줄에 처리할 코드를 작성합니다.
-- 처리할 코드가 두 줄 이상이 아니라면, 괄호 사용을 지양합니다.
+- `if` `else` 표현식 각각이 한 줄로 처리될 수 없다면 괄호로 감싸 블록을 만들어 줍니다.
+
+- `if ~ else` 표현식을 통틀어 한 줄로 처리할 수 있는 경우에는 inline 으로 작성합니다.
+- `if` 표현식이 블록으로 처리되었더라도, `else` 표현식을 한 줄로 처리할 수 있는 경우에는 inline 으로 작성합니다.
 
 ```kotlin
-if (cancelledTransaction) {
-    view.showStrike()
-    view.showAlert()
-} else
-    view.hideStrike()
+// Good
+if (condition) ifExpression else elseExpression
+
+// Good
+if (condition) {
+  ifBlockExpression
+} else {
+  elseBlockExpression
+}
+
+// Good
+if (condition) {
+  ifBlockExpression1
+  ifBlockExpression2
+} else {
+  elseBlockExpression1
+  elseBlockExpression2
+}
+
+// OK
+if (condition) {
+  ifBlockExpression1
+  ifBlockExpression2
+} else elseExpression
+
+// Not Good
+if (condition) ifExpression
+else {
+  elseBlockExpression1
+  elseBlockExpression2
+}
 ```
+
+
+
+### when
+
+자동 정렬 시, `->` 부분이 Vertically Align 됩니다.
 
 
 
@@ -157,24 +191,77 @@ Intent를 생성하는 함수명은 `getIntent()`로 생성합니다.
 
 XML Style은 AndroidStudio 기본 XML 스타일을 기본으로 합니다.
 
-### View
+### Arrangement
+
+XML 태그 내의 각 속성들은 자동 정렬 적용 시 다음과 같은 순서로 배치됩니다:
+**`SORT_BY_NAME`** 이 적혀진 항목은 해당 조건 내에서 Alphabetical Sort 처리됩니다.
+
+1. `xmlns:android`
+1. `xmlns:app`
+1. **`SORT_BY_NAME`** `xmlns:.*`
+1. `name`
+1. `style`
+1. `layout`
+1. `android:id`
+1. `android:name`
+1. `android:layout_width`
+1. `android:layout_height`
+1. `android:layout_marginTop.*`
+1. `android:layout_marginStart.*`
+1. `android:layout_marginLeft.*`
+1. `android:layout_marginEnd.*`
+1. `android:layout_marginRight.*`
+1. `android:layout_marginBottom.*`
+1. `android:layout_.*`
+1. `android:paddingTop.*`
+1. `android:paddingStart.*`
+1. `android:paddingLeft.*`
+1. `android:paddingEnd.*`
+1. `android:paddingRight.*`
+1. `android:paddingBottom.*`
+1. `android:width`
+1. `android:height`
+1. `android:viewportWidth`
+1. `android:viewportHeight`
+1. **`SORT_BY_NAME`** `android:.*`
+1. `app:layout_constraintTop.*`
+1. `app:layout_constraintStart.*`
+1. `app:layout_constraintLeft.*`
+1. `app:layout_constraintEnd.*`
+1. `app:layout_constraintRight.*`
+1. `app:layout_constraintBottom.*`
+1. **`SORT_BY_NAME`** `app:layout_constraint.*`
+1. `app:layout_constrainedWidth`
+1. `app:layout_constrainedHeight`
+1. **`SORT_BY_NAME`** `app:.*`
+1. **`SORT_BY_NAME`** `.*`
+
+
+
+### Snapshot
+
+![XML - Tabs and Indents](XML - Tabs and Indents.png)
+
+![XML - Other](XML - Other.png)
+
+![XML - Arrangement1](XML - Arrangement1.png)
+
+![XML - Arrangement2](XML - Arrangement2.png)
+
+![XML - Code Generation](XML - Code Generation.png)
+
+![XML - Android](XML - Android.png)
+
+
+
+### View ID
 
 `android:id` suffix는 해당 View Type을 사용합니다.
 
 ```xml
 <TextView
     android:id="@+id/welcomeTextView"
-    ...
-    />
-```
-
-Element Closing Tag는 마지막 attribute 다음 줄에 추가합니다.
-
-```xml
-<TextView
-    ...
-    android:orientation="horizontal"
-    />
+    .../>
 ```
 
 
