@@ -527,15 +527,43 @@ function foo() {
 ## React Rules
 ### Whitespace in and around the JSX opening and closing brackets
 
-JSX의 열고 닫는 태그 사이의 space 규칙은 다음과 같이 한다.
+JSX의 열고 닫는 태그 사이의 space 규칙은 다음과 같다.
 
 ```jsx
 // bad
-< Title></Title >
+< Title>{ title }</Title >
 
 // good
-<Title></Title>
+<Title>{ title }</Title>
 ```
+
+```jsx
+// bad
+<Header
+  firstName='John'
+  lastName='Smith'
+>{ title }</Header>
+
+// good
+<Header
+  firstName='John'
+  lastName='Smith'
+>
+  { title }
+</Header>
+```
+
+태그 안에 children이 없는 경우에는 반드시 Self-Closing 태그를 사용한다.
+
+```jsx
+// bad
+<Button></Button>
+
+// good
+<Button />
+```
+
+Self-Closing 태그의 space 규칙은 다음과 같다.
 
 ```jsx
 // bad
@@ -559,22 +587,6 @@ JSX의 열고 닫는 태그 사이의 space 규칙은 다음과 같이 한다.
   firstName='John'
   lastName='Smith'
 />
-```
-
-```jsx
-// bad
-<Header
-  firstName='John'
-  lastName='Smith'
->{ title }</Header>
-
-// good
-<Header
-  firstName='John'
-  lastName='Smith'
->
-  { title }
-</Header>
 ```
 
 ----------------------
