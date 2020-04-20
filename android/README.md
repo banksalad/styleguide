@@ -240,17 +240,17 @@ XML 태그 내의 각 속성들은 자동 정렬 적용 시 다음과 같은 순
 
 ### Snapshot
 
-![XML - Tabs and Indents](XML - Tabs and Indents.png)
+![XML_Tabs_and_Indents](XML_Tabs_and_Indents.png)
 
-![XML - Other](XML - Other.png)
+![XML_Other](XML_Other.png)
 
-![XML - Arrangement1](XML - Arrangement1.png)
+![XML_Arrangement1](XML_Arrangement1.png)
 
-![XML - Arrangement2](XML - Arrangement2.png)
+![XML_Arrangement2](XML_Arrangement2.png)
 
-![XML - Code Generation](XML - Code Generation.png)
+![XML_Code_Generation](XML_Code_Generation.png)
 
-![XML - Android](XML - Android.png)
+![XML_Android](XML_Android.png)
 
 
 
