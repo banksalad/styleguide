@@ -33,6 +33,8 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
   - [Object curly spacing](#object-curly-spacing)
   - [Spacing around infix operators](#spacing-around-infix-operators)
   - [Function declaration](#function-declaration)
+- [React Rules](#react-rules)
+  - [Whitespace in and around the JSX opening and closing brackets](#whitespace-in-and-around-the-jsx-opening-and-closing-brackets)
 - [CSS Rules](#css-rules)
   - [CSS Shorthand](#css-shorthand)
   - [CSS Sort](#css-sort)
@@ -519,6 +521,73 @@ function foo() {
 }
 ```
 
+
+----------------------
+
+## React Rules
+### Whitespace in and around the JSX opening and closing brackets
+
+JSX의 열고 닫는 태그 사이의 space 규칙은 다음과 같다.
+
+```jsx
+// bad
+< Title>{ title }</Title >
+
+// good
+<Title>{ title }</Title>
+```
+
+```jsx
+// bad
+<Header
+  firstName='John'
+  lastName='Smith'
+>{ title }</Header>
+
+// good
+<Header
+  firstName='John'
+  lastName='Smith'
+>
+  { title }
+</Header>
+```
+
+태그 안에 children이 없는 경우에는 반드시 Self-Closing 태그를 사용한다.
+
+```jsx
+// bad
+<Button></Button>
+
+// good
+<Button />
+```
+
+Self-Closing 태그의 space 규칙은 다음과 같다.
+
+```jsx
+// bad
+<Button/>
+<Header firstName='John' lastName='Smith'/>
+
+// good
+<Button />
+<Header firstName='John' lastName='Smith' />
+```
+
+```jsx
+// bad
+< Header
+  firstName='John'
+  lastName='Smith'
+/>
+
+// good
+<Header
+  firstName='John'
+  lastName='Smith'
+/>
+```
 
 ----------------------
 
