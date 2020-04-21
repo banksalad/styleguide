@@ -178,6 +178,17 @@ else {
 
 자동 정렬 시, `->` 부분이 Vertically Align 됩니다.
 
+```kotlin
+when (condition) {
+    caseExpression1         -> inlineExpression1
+    someLongCaseExpression2 -> inlineExpression2
+    caseExpression3         -> {
+        multiLineExpression3_1
+        multiLineExpression3_2
+        multiLineExpression3_3
+    }
+}
+```
 
 
 ### Intent
