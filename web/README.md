@@ -26,6 +26,7 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
     - [If-else](#if-else)
     - [Ternary operator](#ternary-operator)
     - [Array & Object](#array-&-Object)
+    - [Arrays bracket newline](#arrays-bracket-newline)
     - [Function Parameters](#function-parameters)
   - [Semicolon](#semicolon)
   - [Padding lines between statements](#padding-lines-between-statements)
@@ -55,7 +56,6 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
   - [Import order](#import-order)
   - [Style import](#style-import)
   - [Image import](#image-import)
-
 
 ----------------------
 
@@ -140,7 +140,6 @@ var unescaped = "a string containing 'single' quotes";
   "bar": true
 }
 ```
-
 
 ----------------------
 
@@ -328,6 +327,66 @@ const bar = {
   c: 'longlonglongName3',
   d: 'longlonglongName4',
 };
+```
+
+#### Arrays Bracket Newline
+
+Array 안에 여러 개의 값이 들어갈 경우 괄호 전후로 항상 줄바꿈이 이뤄져야 한다.
+
+```javascript
+// bad
+const array = [{
+  name: 'Lee',
+  team: 'WebFrontend',
+}, {
+  name: 'Lee',
+  team: 'WebFrontend',
+}];
+
+const array = [{
+  name: 'Lee',
+}, {
+  name: 'Lee',
+}];
+
+const array = [[
+	1, 2,
+], [
+	3, 4,
+]];
+
+// good
+const array = [
+  {
+    name: 'Lee',
+    team: 'WebFrontend',
+  },
+  {
+    name: 'Lee',
+    team: 'WebFrontend',
+  },
+];
+
+const array = [
+  { name: 'Lee' },
+  { name: 'Lee' },
+];
+
+const array = [
+  [
+    1,
+    2,
+  ],
+  [
+    3,
+    4,
+  ],
+];
+
+const array = [
+  [ 1, 2 ],
+  [ 3, 4 ],
+];
 ```
 
 #### Function Parameters
@@ -520,7 +579,6 @@ function foo() {
 
 }
 ```
-
 
 ----------------------
 
@@ -715,7 +773,6 @@ CSS 속성 정렬은 다음과 같은 순서를 따른다.
 > Box model 범주에 속하는 속성들은 밖에서 안으로 향하는 순서(From outside in)로 나열한다.  
 > 원래대로라면 border 속성도 Box model 범주에 포함시켜야하겠지만, border 영역은 두께만 단독으로 선언하지 않고 색상(Color)을 함께 선언하는 경우가 대부분이므로 Color 범주로 포함시킨다.
 
-
 ----------------------
 
 
@@ -849,7 +906,6 @@ const sendUIEvent = function() {
 };
 ```
 
-
 ----------------
 
 
@@ -904,7 +960,7 @@ var a = 1;
 import { App } from '@/components';
 
 var a = 1;
-```   
+```
 
 ### Absolute path import
 
