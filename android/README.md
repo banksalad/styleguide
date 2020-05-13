@@ -19,10 +19,9 @@ Style Guide for Android Developers
 
 ### Line Spacing
 
-한 줄은 **100자**를 초과하지 않습니다.
+한 줄은 **140자**를 초과하지 않습니다.
 
-- Argument가 많다면, 한줄에 하나의 Argument만 적어주세요.
-- `import`  `class` 사이에는 **두 줄**을 띄웁니다.
+- Argument가 많다면, 한줄에 하나의 Argument만 적어주세요 (Chop down if long).
 
 ```kotlin
 ...
@@ -176,19 +175,20 @@ else {
 
 ### when
 
-자동 정렬 시, `->` 부분이 Vertically Align 됩니다.
+한 줄일 경우에는 inline 하고, 여러 줄인 경우에는 `{}` Block을 이용합니다.
 
 ```kotlin
 when (condition) {
-    caseExpression1         -> inlineExpression1
+    caseExpression1 -> inlineExpression1
     someLongCaseExpression2 -> inlineExpression2
-    caseExpression3         -> {
+    caseExpression3 -> {
         multiLineExpression3_1
         multiLineExpression3_2
         multiLineExpression3_3
     }
 }
 ```
+
 
 
 ### Intent
