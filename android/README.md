@@ -120,12 +120,14 @@ Reference from [Kotlin Scoping Functions apply vs. with, let, also, and run](htt
 
 ![Kotlin Scope Function](https://miro.medium.com/max/1008/1*t3hR3BuuWySMGdcN5SNhXg.png)
 
-특정 객체가 **복수로 사용되는 경우**에서만 사용합니다.
+**Caution**
+
+- 특정 객체가 **복수로 사용되는 경우**에서만 사용하는 것을 권장합니다.
+- Rule을 지향하지만, 개발자 본인이 판단하기에 Best Practice를 구현하는 것이 좋습니다.
 
 **apply 사용 규칙**
 
 - 수신 객체 람다 내부에서 수신 객체의 함수를 사용하지 않고 수신 객체 자신을 다시 반환 하려는 경우에 apply 를 사용합니다.
-
 - 수신 객체 의 프로퍼티 만을 사용하는 대표적인 경우가 객체의 초기화 이며, 이곳에 apply 를 사용합니다.
 
 ```kotlin
@@ -182,16 +184,16 @@ fun printAge(person: Person) = person.run {
 }
 ```
 
-**여러 범위 지정 함수 결합**
+**Combining Multiple Scoping Functions**
 
-- 코드 가독성을 향상시키기 위해 범위 지정 기능을 분리하여 어떻게 사용할 수 있는지 보여주었습니다. 하나의 코드 블록 내에서 여러 범위 지정 함수를 중첩 하려는 경우가 종종 있습니다. 그러나 범위 지정 함수가 중첩되면 코드의 가독성이 떨어지고 파악하기 어려워 집니다.
-- **원칙적으로 중첩은 하지 않는 것이 좋습니다.** 수신객체 지정 람다 에 수신 객체가 암시적으로 전달되는 apply, run, with 는 중첩하지 마십시오.
-- 이 함수들은 수신 객체를 this 또는 생략하여 사용하며, 수신객체의 이름을 다르게 지정할수 없기 때문에 중첩될 경우 혼동 하기 쉬워집니다.
+- 하나의 코드 블록 내에서 Scoping Function을 중첩 하려는 경우가 종종 있습니다. 그러나 Scoping Function이 중첩되면 코드의 가독성이 떨어지고 파악하기 어려워 집니다.
+- **원칙적으로 중첩은 하지 않는 것이 좋습니다.** 수신객체 지정 람다에 수신 객체가 암시적으로 전달되는 apply, run, with 는 가급적 중첩하지 말아주세요.
+- 이 함수들은 수신 객체를 this 또는 생략하여 사용하며, 수신객체의 이름을 다르게 지정할수 없기 때문에 중첩될 경우 혼동하기 쉬워집니다.
 - also 와 let 을 중첩 해야만 할때는 암시적 수신 객체 를 가르키는 매개 변수 인 it 을 사용하지 마십시오. 대신 명시적인 이름을 제공하여 코드 상의 이름이 혼동되지 않도록 해야 합니다.
 
-**Chaning Method로 범위 지정 함수 결합**
+**Combining Multiple Scoping Functions By Chaning Method**
 
-좋은 예
+- Best Practice
 
 ```kotlin
 private fun insert(user: User) = SqlBuilder().apply {
