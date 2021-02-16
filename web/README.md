@@ -1,6 +1,6 @@
-# Rainist Web Style Guide
+# Banksalad Web Style Guide
 
-Rainist 웹팀 구성원을 위한 전반적인 코드 스타일 가이드입니다.  
+Banksalad 웹팀 구성원을 위한 전반적인 코드 스타일 가이드입니다.  
 JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을 포함하고 있습니다.  
 
 
