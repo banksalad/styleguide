@@ -1,10 +1,10 @@
-# Rainist Python Style Guide
+# Banksalad Python Style Guide
 
-Rainist 구성원이 파이썬 코드를 작성할 때 참고할 스타일 가이드입니다.
+Banksalad 구성원이 파이썬 코드를 작성할 때 참고할 스타일 가이드입니다.
 
 ## 프로젝트 구성
 
-* 프로젝트의 초기 세팅에 [cookiecutter](https://github.com/audreyr/cookiecutter)와 [Rainist/python](https://github.com/Rainist/python) 템플릿을 사용합니다.
+* 프로젝트의 초기 세팅에 [cookiecutter](https://github.com/audreyr/cookiecutter)와 [banksalad/python](https://github.com/banksalad/python) 템플릿을 사용합니다.
 * 해당 템플릿을 사용해 아래에 기술된 컨벤션에 맞는 각종 설정 파일을 구성할 수 있습니다.
 
 ## 메타원칙
@@ -114,7 +114,7 @@ def foo(short: int) -> None:
 
 - [x] [pylint](https://www.pylint.org/): eslint처럼 작성된 파이썬 코드에 잘못된 부분은 없는지, 더 개선할 부분은 없는지 자동으로 검사해주는 린트 도구입니다. [`.pylintrc`](https://github.com/Rainist/python/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.pylintrc) 파일을 통해 세부적인 옵션을 조정할 수 있습니다.
 - [x] [isort](https://github.com/timothycrosley/isort): import order를 자동으로 정렬해주는 도구입니다. [`.editorconfig`](https://github.com/Rainist/python/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/.editorconfig) 혹은 `.isort.cfg`로 세부적인 옵션을 조정할 수 있습니다.
-- [ ] [black](https://github.com/ambv/black): auto formatter 중 하나입니다. [medium 아티클](https://medium.com/3yourmind/auto-formatters-for-python-8925065f9505)에서 볼 수 있듯 다른 포매터도 있지만 black을 제안하는 이유는 따로 설정해줘야 할 부분이 적으며 위에서 주장한 스타일에 가장 근접하게 동작하는 도구이기 때문입니다. 다만 포매터는 기호가 있을 수 있는 부분이며 없어도 충분히 Rainist의 스타일에 맞는 코드를 작성할 수 있기에 이는 개인에 판단에 따라 사용합니다.
+- [ ] [black](https://github.com/ambv/black): auto formatter 중 하나입니다. [medium 아티클](https://medium.com/3yourmind/auto-formatters-for-python-8925065f9505)에서 볼 수 있듯 다른 포매터도 있지만 black을 제안하는 이유는 따로 설정해줘야 할 부분이 적으며 위에서 주장한 스타일에 가장 근접하게 동작하는 도구이기 때문입니다. 다만 포매터는 기호가 있을 수 있는 부분이며 없어도 충분히 뱅크샐러드의 스타일에 맞는 코드를 작성할 수 있기에 이는 개인에 판단에 따라 사용합니다.
 
 ### [`pre-push` hook](https://github.com/Rainist/python/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/bin/pre-push)
 
