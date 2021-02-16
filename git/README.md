@@ -1,6 +1,6 @@
-# Rainist Git Commit Message Style Guide
+# Banksalad Git Commit Message Style Guide
 
-레이니스트 엔지니어링 팀에서 지향하는 Git commit message 스타일 가이드입니다. 좋은 Git commit message(이하 커밋 메시지)를 작성하는 일은 그리 쉬운 일이 아닙니다. 이에 저희가 생각하는 좋은 커밋 메시지의 형태에 대한 생각을 공유합니다.
+뱅크샐러드 엔지니어링 팀에서 지향하는 Git commit message 스타일 가이드입니다. 좋은 Git commit message(이하 커밋 메시지)를 작성하는 일은 그리 쉬운 일이 아닙니다. 이에 저희가 생각하는 좋은 커밋 메시지의 형태에 대한 생각을 공유합니다.
 
 ## Structure
 
