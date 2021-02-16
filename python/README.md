@@ -1,6 +1,6 @@
-# Rainist Python Style Guide
+# Banksalad Python Style Guide
 
-Rainist 구성원이 파이썬 코드를 작성할 때 참고할 스타일 가이드입니다.
+Banksalad 구성원이 파이썬 코드를 작성할 때 참고할 스타일 가이드입니다.
 
 ## 프로젝트 구성
 
