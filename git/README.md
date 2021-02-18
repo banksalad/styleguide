@@ -72,10 +72,10 @@ Pull Request를 할 때 저희 조직만의 규칙들을 소개하려고 합니�
 
 ## Git Hooks
 
-간편한 커밋 메시지, 브랜치 이름 관리를 위해 [Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks/) 스크립트를 제공합니다. 프로젝트 디렉토리에서 아래의 스크립트를 실행하면 해당 프로젝트에 커밋 메시지, 브랜치 이름을 체크하는 Git Hook이 활성화 됩니다.
+간편한 커밋 메시지, 브랜치 이름 관리를 위해 [Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks/) 스크립트를 제공합니다. 프로젝트 디렉토리에서 아래의 스크립트를 실행하면 해당 프로젝트에 커밋 메시지, 브랜치 이름을 체크하는 Git Hook이 활성화 됩니다. $GH_ACCESS_TOKEN에는 본인의 Github Access Token을 넣어주세요.
 
 ```sh
-$ curl -H "Authorization: token $GITHUB_ACCESS_TOKEN" -o .git/hooks/prepare-commit-msg --create-dirs https://raw.githubusercontent.com/banksalad/styleguide/git/hooks/prepare-commit-msg && chmod +x .git/hooks/prepare-commit-msg
+$ curl -H "Authorization: token $GH_ACCESS_TOKEN" -o .git/hooks/prepare-commit-msg --create-dirs https://raw.githubusercontent.com/banksalad/styleguide/git/hooks/prepare-commit-msg && chmod +x .git/hooks/prepare-commit-msg
 ```
 
 Git Hook이 제대로 활성화 되었다면 커밋 메시지나 브랜치 이름이 위에서 설명된 양식에 맞지 않을 경우 오류메시지와 함게 커밋이 실패하게 됩니다.
