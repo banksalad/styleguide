@@ -1,0 +1,24 @@
+#!/bin/bash
+
+branch=$(git branch --show-current)
+master_branch="master"
+branch_regexp="^[A-Z]+\-[0-9]+\-.+$"
+# Check a branch name
+if [[ $branch -ne master_branch && ! $branch =~ $branch_regexp ]]; then
+  echo "[INVALID BRANCH NAME]"
+  echo "e.g.) JIRA-123-feature-description"
+  exit 1
+fi
+
+commit=$(head -1 "$1")
+min_length=1
+max_length=50
+commit_regexp="^\[[A-Z0-9\-]*\] .{$min_length,$max_length}$"
+# Check a commit message
+if [[ ! $commit =~ $commit_regexp ]]; then
+  echo "[INVALID COMMIT MESSAGE]"
+  echo "e.g.) [JIRA-123] Commit Message"
+  echo "Min length: $min_length"
+  echo "Max length: $max_length"
+  exit 1
+fi
