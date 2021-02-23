@@ -2,7 +2,6 @@
 
 뱅크샐러드 엔지니어링 팀에서 지향하는 Git 사용법 가이드입니다.
 
-
 ## 커밋 메시지 Style Guide
 
 좋은 Git 커밋 메시지(이하 커밋 메시지)를 작성하는 일은 그리 쉬운 일이 아닙니다. 이에 저희가 생각하는 좋은 커밋 메시지의 형태에 대한 생각을 공유합니다.
@@ -11,7 +10,7 @@
 커밋 메시지는 다음의 형태로 작성해주세요.
 
 ```
-[JIRA-123] Short (50 chars or less) summary of changes
+Short (50 chars or less) summary of changes
 
 Additional explanation if necessary.
 
@@ -19,8 +18,6 @@ Additional explanation if necessary.
 ```
 
 ### DO
-- 가장 처음엔 [Jira](https://rainist.atlassian.net/jira/) Ticket 번호를 추가해주세요.
-    + 커밋 메시지에는 모두 담을 수 없는 추가적인 내용을 전달 하는데 도움이 됩니다.
 - 요약은 반드시 영어로 작성해주세요.
     + 이는 오픈 소스 코드 저장소를 참고하거나 저장소에 기여할 때의 장벽을 낮춰주는 훈련이 됩니다.
 - 언제나 요약은 명령문 형태로 작성해주세요. 주어를 따로 적지 않고 동사로 문장을 시작하며 늘 동사 원형을 사용합니다.
@@ -62,20 +59,12 @@ Pull Request를 할 때 저희 조직만의 규칙들을 소개하려고 합니�
     - 머지하고 배포를 안하면 나중에 여러개의 커밋들이 한번에 배포될 수 있습니다.
     - 장애가 발생한 경우에 어떤 커밋 때문에 장애가 발생했는지 알지 못하기 때문에 여러개의 커밋 한번에 롤백해야하는 상황이 발생합니다.
 
-## Pull Request 리뷰하는 방법
+## Naming Lint
 
-뱅크샐러드에서는 코드리뷰 문화를 개선하려는 시도들을 항상 해왔습니다. 그래서 더 나은 코드 리뷰 문화를 위해 Pn/Dn이라는 방식을 선택했습니다. 간략하게 설명하자면, 코드리뷰를 할 때 앞에 P1~P5을 코멘트에 추가하는 것입니다. 숫자가 작을 수록 중요한 코멘트이니 반영해달라는 의미입니다. 또한, Pull Request를 open할 때 D0~D5를 라벨 혹은 표시를 합니다. 숫자가 낮을 수록 빠르게 진행해야 하는 건이니 빠르게 리뷰하고, 논의가 필요한 상황이면 적극적으로 도와달라는 의미입니다.  
-
-자세한 내용은 다음 문서 및 쓰레드를 참고해주세요.
-  - [더 나은 코드 리뷰 문화를 위한 제언](https://docs.google.com/document/d/138EUDZsd0wTHoynDIiEPURhiEqnZqABqzO02vLjPTho/edit#heading=h.5x0d5h95i329)
-  - [Pull Request 리뷰 관련 쓰레드](https://rainist.slack.com/archives/C0324HT1Z/p1582118248184200)
-
-## Git Hooks
-
-간편한 커밋 메시지, 브랜치 이름 관리를 위해 [Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks/) 스크립트를 제공합니다. 프로젝트 디렉토리에서 아래의 스크립트를 실행하면 해당 프로젝트에 커밋 메시지, 브랜치 이름을 체크하는 Git Hook이 활성화 됩니다. $GH_ACCESS_TOKEN에는 본인의 Github Access Token을 넣어주세요.
+간편한 Pull Request, Branch 이름 관리를 위해 [Github Actions](https://docs.github.com/en/actions), [Git Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks/) 를 이용한 Lint 설정을 제공합니다. 프로젝트 디렉토리에서 아래의 스크립트를 실행하면 해당 프로젝트에 Pull Request, Branch 이름을 체크하는 Github Actions Workflow, Git Hook이 활성화 됩니다.
 
 ```sh
-$ GH_ACCESS_TOKEN=$GH_ACCESS_TOKEN curl -o- https://raw.githubusercontent.com/banksalad/styleguide/git/install_hooks.sh | bash
+$ curl -o- https://raw.githubusercontent.com/banksalad/styleguide/git/install_hooks.sh | bash
 ```
 
-Git Hook이 제대로 활성화 되었다면 커밋 메시지나 브랜치 이름이 위에서 설명된 양식에 맞지 않을 경우 오류메시지와 함게 커밋이 실패하게 됩니다.
+위 스크립트가 제대로 실행 되었다면 Pull Request나 Branch 이름이 위에서 설명된 양식에 맞지 않을 경우 merge, commit이 실패하게 됩니다.
