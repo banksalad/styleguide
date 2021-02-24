@@ -41,7 +41,7 @@ Additional explanation if necessary.
 
 ## Pull Request 단위로 작업하는 방법
 
-뱅크샐러드에서는 브랜치 전략으로 git flow를 사용하지 않고 있습니다. 빠른 배포를 위해, 필요한 코드에 대해 브랜치만 생성해서 작업 후에 머지하는 방식을 채택해 진행하고 있습니다.
+뱅크샐러드에서는 Android / iOS 등 Mono-repo를 사용하는 팀을 제외하고는 기본적으로 브랜치 전략으로 Git Flow를 사용하지 않고 있습니다. 빠른 배포를 위해, 필요한 코드에 대해 브랜치만 생성해서 작업 후에 머지하는 방식을 채택해 진행하고 있습니다.
 
 - [하루에 1000번 배포하는 조직 되기](https://blog.banksalad.com/tech/become-an-organization-that-deploys-1000-times-a-day/)
 
