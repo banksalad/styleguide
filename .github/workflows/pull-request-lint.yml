@@ -11,7 +11,7 @@ jobs:
     name: Title Format Validation for Jira
     runs-on: ubuntu-latest
     steps:
-      - uses: neofinancial/ticket-check-action@v1.3.3
+      - uses: seferov/pr-lint-action@master
         with:
-          titleRegex: '^\[[A-Z]{1}[A-Z0-9]{1,9}\-\d+\]\ [^\ ].*$'
-          branchRegex: '^[A-Z]+\-[0-9]+\-.+$'
+          title-regex: '^\[[A-Z]{1}[A-Z0-9]{1,9}\-\d+\]\ [^\ ].*$'
+          error-message: 'Add Jira ID to your title'
