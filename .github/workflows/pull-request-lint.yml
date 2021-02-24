@@ -9,7 +9,7 @@ on:
 jobs:
   title_validation:
     name: Title Format Validation for Jira
-    runs-on: [self-hosted, default]
+    runs-on: ubuntu-latest
     steps:
       - uses: neofinancial/ticket-check-action@v1.3.3
         with:
