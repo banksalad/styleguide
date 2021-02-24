@@ -51,7 +51,7 @@ Pull Request를 할 때 저희 조직만의 규칙들을 소개하려고 합니�
 - [commit-train based deployment](https://blog.banksalad.com/tech/become-an-organization-that-deploys-1000-times-a-day/?gclid=Cj0KCQiA3NX_BRDQARIsALA3fIJ1dXP9Btp4Jqkze2iTPbMh2W3hlXi6ORJJsXBPvkX-d3jSDmGacx4aAphzEALw_wcB#lightweight-branching-model) 전략 을 사용 중이기 때문에 Pull Request의 title이 master(main) 브랜치의 커밋 메시지가 됩니다.
 - Pull Request 내용에 맞게 title과 description을 적절히 작성합니다.
     - title, description에 jira ticket key를 명시 하면 [Autolink references](https://docs.github.com/en/github/administering-a-repository/configuring-autolinks-to-reference-external-resources) 설정에 의해 자동으로 링크가 걸립니다.
-- Pull Request를 open할 때는 master에 바로 머지될 수 있는 코드들만 open합니다.
+- Pull Request를 open할 때는 main 브랜치에 바로 머지될 수 있는 코드들만 open합니다.
     - 논의가 필요한 코드이던가 질문이 있는 경우에는 #chapter_tech를 통해서 먼저 물어보던지 Draft로 Pull Request를 열어서 질문을 합니다.
 - Pull Request의 ownership은 Pull Request를 open한 author가 가져갑니다.
     - Pull Request이 approve가 되었다면 Pull Request의 owner가 ownsership을 갖고 직접 머지합니다. 
