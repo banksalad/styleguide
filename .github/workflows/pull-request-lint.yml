@@ -13,6 +13,5 @@ jobs:
     steps:
       - uses: neofinancial/ticket-check-action@v1.3.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           titleRegex: '^\[[A-Z]{1}[A-Z0-9]{1,9}\-\d+\]\ [^\ ].*$'
           branchRegex: '^[A-Z]+\-[0-9]+\-.+$'
