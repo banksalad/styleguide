@@ -56,7 +56,7 @@ Pull Request를 할 때 저희 조직만의 규칙들을 소개하려고 합니�
   전략을 사용하고 있으므로 Pull Request의 title이 main 브랜치의 커밋 메시지가 됩니다.
   (단, 1 Commit PR인 경우에만 예외적으로 해당 Commit이 곧 Merged Commit Title이 됩니다.)
 - Pull Request 내용에 맞게 title과 description을 적절히 작성합니다.
-    - title, description에 jira ticket key를 명시
+    - title, description에 jira ticket issue key를 명시
       하면 [Autolink references](https://docs.github.com/en/github/administering-a-repository/configuring-autolinks-to-reference-external-resources)
       설정에 의해 자동으로 링크가 걸립니다.
 - Pull Request를 open할 때는 main 브랜치에 바로 머지될 수 있는 코드들만 open합니다.
