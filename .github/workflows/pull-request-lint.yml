@@ -1,0 +1,18 @@
+name: 'Pull Request Lint'
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+jobs:
+  title_validation:
+    name: Title Format Validation for Jira
+    runs-on: [self-hosted, default]
+    steps:
+      - uses: neofinancial/ticket-check-action@v1.3.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          titleRegex: '^\[[A-Z]{1}[A-Z0-9]{1,9}\-\d+\]\ [^\ ].*$'
+          branchRegex: '^[A-Z]+\-[0-9]+\-.+$'
