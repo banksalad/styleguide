@@ -11,11 +11,11 @@
 커밋 메시지는 다음의 형태로 작성해주세요.
 
 ```
-Short (50 chars or less) summary of changes
+format: [Jira-ticket] + Short (50 chars or less) summary of changes
+ex. [EPT-340] Change function name
 
 Additional explanation if necessary.
-
-#issue or https://your-reference.com/link
+(#issue or https://your-reference.com/link)
 ```
 
 ### DO
@@ -53,12 +53,13 @@ Pull Request를 할 때 저희 조직만의 규칙들을 소개하려고 합니�
     - 주석으로 코드를 이해하는 것이 아니라 코드만 봐도 동작 방식을 이해할 수 있어야 하기 때문입니다.
 - Pull Request의 단위는 작게 유지합니다. 그래야 리뷰어들도 더 원활하게 리뷰할 수 있기 때문입니다.
 - [commit-train based deployment](https://blog.banksalad.com/tech/become-an-organization-that-deploys-1000-times-a-day/?gclid=Cj0KCQiA3NX_BRDQARIsALA3fIJ1dXP9Btp4Jqkze2iTPbMh2W3hlXi6ORJJsXBPvkX-d3jSDmGacx4aAphzEALw_wcB#lightweight-branching-model)
-  전략을 사용하고 있으므로 Pull Request의 title이 main 브랜치의 커밋 메시지가 됩니다.
-  (단, 1 Commit PR인 경우에만 예외적으로 해당 Commit이 곧 Merged Commit Title이 됩니다.)
-- Pull Request 내용에 맞게 title과 description을 적절히 작성합니다.
-    - title, description에 jira ticket issue key를 명시
-      하면 [Autolink references](https://docs.github.com/en/github/administering-a-repository/configuring-autolinks-to-reference-external-resources)
-      설정에 의해 자동으로 링크가 걸립니다.
+  전략을 사용하고 있으므로 Pull Request의 title이 default 브랜치의 커밋 메시지가 됩니다.
+    - Pull Request의 title은 [jira ticket]+description 형식으로 수정합니다.
+      - 예) [EPT-340] Change function name
+      - title에 jira ticket issue key를 명시
+        하면 [Autolink references](https://docs.github.com/en/github/administering-a-repository/configuring-autolinks-to-reference-external-resources)
+        설정에 의해 자동으로 링크가 걸립니다.
+    - 단, 1 Commit PR인 경우에는 해당 Commit이 Pull Request의 Title이 되므로 수정할 필요가 없습니다.
 - Pull Request를 open할 때는 main 브랜치에 바로 머지될 수 있는 코드들만 open합니다.
     - 논의가 필요한 코드이던가 질문이 있는 경우에는 #chapter_tech를 통해서 먼저 물어보던지 Draft로 Pull Request를 열어서 질문을 합니다.
 - Pull Request의 ownership은 Pull Request를 open한 author가 가져갑니다.
