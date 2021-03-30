@@ -38,7 +38,6 @@ module.exports = {
     "@typescript-eslint/no-shadow": "warn",
     "@typescript-eslint/ban-types": "warn",
     "@typescript-eslint/no-explicit-any": "warn",
-    "@typescript-eslint/no-shadow": "warn",
     /* 명시적인 return type 작성*/
     "@typescript-eslint/explicit-module-boundary-types": "off",
 
