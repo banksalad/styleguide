@@ -1,8 +1,17 @@
 # Airbnb Style Migration Guide
 ## 0. 시작하기전에
+### 1) 왜 Airbnb 룰로 통합하는가?
+- 코드리뷰에서 스타일에 대한 논의를 줄이고, 코드 작성시에도 formatting 에 대한 리소스를 줄이기 위해 보다 코드로 적용 가능한 스타일 가이드가 필요했습니다.
+- 기존 style guide는 lint rule로 정확하게 반영되지 않아, 각 레포별로 파편화가 이루어져 있있고  일부 formatting 의 경우 각 개발자의 에디터에 의존하고 있었습니다.
+- 이를 해결하고자 global standard 인 airbnb 룰을 적용하기로 했습니다. 이제 저장시에 formatting 과 linting 이 동시에 진행되어 개발시에 style에 대한 리소스를 신경쓰지 않아도 됩니다.
+### 2) 서버 코드는 react 코드가 아닌데 어떤 lint 룰을 적용해야 하는가?
+- 일당은 서버코드는 현재 rule을 그대로 적용하고, client 코드에만 airbnb 룰을 적용하려 합니다.
 - airbnb style guide는 리엑트 rule을 포함하고 있어 express server 쪽 lint 세팅에는 적합하지 않습니다.
 - 따라서 server 쪽에 대한 lint를 어떻게 가져가야 할지 제쳐두고 client 폴더에 아래 설정을 진행합시다.(서버쪽에 대한 lint 세팅은 추후 논의를 통해 어떻게 할지 정하면 될 것 같고 우선순위가 높지는 않다고 판단했습니다.)
-- 해당 세팅을 하면 `eslint --fix` 실행으로 lint 와 prettier를 같이 적용할 수 있습니다. 별도 prettier를 설정하지 않아도 됩니다. fyi `eslint-config-prettier` 와 `eslint-plugin-prettier`가 이 문제를 eslint 와 prettier를 통합해주는 역할을 합니다.
+
+### 3) 아래 세팅을 살펴보면 prettier 는 별도 실행되지 않는데 어떻게 된건가?
+- 아래 가이드 대로 세팅을 하면 `eslint --fix` 실행으로 lint 와 prettier를 같이 적용할 수 있습니다. 별도 prettier를 설정하지 않아도 됩니다.
+- `fyi`: `eslint-config-prettier` 와 `eslint-plugin-prettier`가  eslint 와 prettier를 통합해주는 역할을 합니다.
 
 
 ## 1. 설정과 관련된 package 설치
@@ -77,6 +86,9 @@ trim_trailing_whitespace = false
 ## 4. eslint 설정
 - `.eslintrc.js` 파일을 만들고 아래와 같이 세팅해줍니다.
 ```js
+/*
+ reference: https://github.com/toshi-toma/eslint-config-airbnb-typescript-prettier
+*/
 module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -114,16 +126,15 @@ module.exports = {
     "@typescript-eslint/no-shadow": "warn",
     "@typescript-eslint/ban-types": "warn",
     "@typescript-eslint/no-explicit-any": "warn",
-    "@typescript-eslint/no-shadow": "warn",
     /* 명시적인 return type 작성*/
     "@typescript-eslint/explicit-module-boundary-types": "off",
 
     // js
     "camelcase": "off",
-    "react/require-default-props": "off",
     "consistent-return": "off",
+    "no-console": ["warn", { "allow": ["error", "warn"] }],
     /* redux toolkit immer js를 위한 세팅 */
-    'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state'] }],
+    "no-param-reassign": ["error", { props: true, ignorePropertyModificationsFor: ["state"] }],
     "no-underscore-dangle": "warn",
     "eqeqeq": "warn",
     "radix": "warn",
@@ -140,6 +151,7 @@ module.exports = {
     "jsx-a11y/no-noninteractive-element-interactions": "warn",
 
     // React
+    "react/require-default-props": "off",
     "react/jsx-filename-extension": ["error", { extensions: [".tsx"] }],
     "react/prop-types": "off",
     "react-hooks/exhaustive-deps": "off",
@@ -150,6 +162,9 @@ module.exports = {
     // import
     "import/no-cycle": "off",
     "import/prefer-default-export": "off",
+    // 테스트 코드에 있는 dependencies를 dev로 옮기라고 경고 뜨는 이슈를 해결하기 위함
+    // https://github.com/banksalad/styleguide/pull/35#discussion_r603753937
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["/**/*.ts?(x)"]}],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -179,6 +194,7 @@ module.exports = {
     "import/extensions": [".js", ".ts", ".mjs", ".jsx", ".tsx"]
   }
 };
+
 ```
 ## 5. style guide 적용
 ```json
