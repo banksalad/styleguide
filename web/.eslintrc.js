@@ -43,7 +43,6 @@ module.exports = {
 
     // js
     "camelcase": "off",
-    "react/require-default-props": "off",
     "consistent-return": "off",
     /* redux toolkit immer js를 위한 세팅 */
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state'] }],
@@ -63,6 +62,7 @@ module.exports = {
     "jsx-a11y/no-noninteractive-element-interactions": "warn",
 
     // React
+    "react/require-default-props": "off",
     "react/jsx-filename-extension": ["error", { extensions: [".tsx"] }],
     "react/prop-types": "off",
     "react-hooks/exhaustive-deps": "off",
