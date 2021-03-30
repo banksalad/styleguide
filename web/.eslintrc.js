@@ -44,6 +44,7 @@ module.exports = {
     // js
     "camelcase": "off",
     "consistent-return": "off",
+    "no-console": ["warn", { "allow": ["error", "warn"] }],
     /* redux toolkit immer js를 위한 세팅 */
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state'] }],
     "no-underscore-dangle": "warn",
