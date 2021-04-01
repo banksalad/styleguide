@@ -5,7 +5,7 @@
 - 기존 style guide는 lint rule로 정확하게 반영되지 않아, 각 레포별로 파편화가 이루어져 있있고  일부 formatting 의 경우 각 개발자의 에디터에 의존하고 있었습니다.
 - 이를 해결하고자 global standard 인 airbnb 룰을 적용하기로 했습니다. 이제 저장시에 formatting 과 linting 이 동시에 진행되어 개발시에 style에 대한 리소스를 신경쓰지 않아도 됩니다.
 ### 2) 서버 코드는 react 코드가 아닌데 어떤 lint 룰을 적용해야 하는가?
-- 일당은 서버코드는 현재 rule을 그대로 적용하고, client 코드에만 airbnb 룰을 적용하려 합니다.
+- 일단 서버코드는 현재 rule을 그대로 적용하고, client 코드에만 airbnb 룰을 적용하려 합니다.
 - airbnb style guide는 리엑트 rule을 포함하고 있어 express server 쪽 lint 세팅에는 적합하지 않습니다.
 - 따라서 server 쪽에 대한 lint를 어떻게 가져가야 할지 제쳐두고 client 폴더에 아래 설정을 진행합시다.(서버쪽에 대한 lint 세팅은 추후 논의를 통해 어떻게 할지 정하면 될 것 같고 우선순위가 높지는 않다고 판단했습니다.)
 
@@ -13,6 +13,10 @@
 - 아래 가이드 대로 세팅을 하면 `eslint --fix` 실행으로 lint 와 prettier를 같이 적용할 수 있습니다. 별도 prettier를 설정하지 않아도 됩니다.
 - `fyi`: `eslint-config-prettier` 와 `eslint-plugin-prettier`가  eslint 와 prettier를 통합해주는 역할을 합니다.
 
+### reference
+- [Why You Should Use ESLint, Prettier & EditorConfig](https://blog.theodo.com/2019/08/why-you-should-use-eslint-prettier-and-editorconfig-together/)
+- [airbnb style guide](https://airbnb.io/javascript/)
+- [airbnb react style guide](https://github.com/airbnb/javascript/tree/master/react)
 
 ## 1. 설정과 관련된 package 설치
 - devDependency 에 아래 명시한 package 등록
@@ -206,9 +210,10 @@ module.exports = {
 ```
 - package.json script 에 `lint:fix` 를 등록합니다.
 - `npm run lint:fix` 실행을 통해 lint 룰을 fix합니다.
-- 아마 해당 rule 과 달라서 lint시 
+- `auto fix` 가 가능한 부분(주로 formatting)들은 자동으로 수정이 됩니다.
+- `auto fix` 가 안되는 부분(js, react lint rule 부분)은 직접 수정해야 하는데, 아래 섹션에서 다루겠습니다.
 
-## 5. eslint auto fix 가 안되는 부분 해결
+## 6. eslint auto fix 가 안되는 부분 해결
 ### 1) 1개의 rule 만 어긋나서 즉시 수정이 가능한 경우
 - `"eslint src --fix` 로 auto fix를 했으나, 아래의 예시처럼 auto fix 가 되지 않는 부분이 있습니다. 이 부분은 직접 고쳐주셔야 합니다. 해당 rule을 참고하여 직접 고치셔야 합니다. 
 ![image](https://user-images.githubusercontent.com/35516239/112939766-fea74980-9166-11eb-9b58-3949cd32de7b.png)
@@ -223,28 +228,45 @@ module.exports = {
 - 이때는 아래 이미지와 같이 해당 Rule 을 warn으로 바꾸어서 일단 ci build에서는 통과시키고 TODO로 남겨두고 티켓을 생성한 뒤 추후 migration 하는 방법으로 해결합니다.
 
 ![image](https://user-images.githubusercontent.com/35516239/112943099-00274080-916c-11eb-8b93-15b078521f16.png)
-
-
 - 단번에 진행하기 어려운 경우 이런 방식으로 일단 migration 하고 추후 해결하는 방법으로 진행합니다.
 
-# Editor 별 eslint, editoronfig 세팅 
-## 1.vscode 
+### 3) 특정 룰의 경우 특정 파일에서는 적용되지 않도록 하가는 설정
+- e.g. 예를들어 `/.test.ts(x)?/` 처럼 test 코드에는 any 타입을 허용하고 싶을 수 있습니다. test code를 작성하다 보면 어쩔 수 없이 any 타입을 사용하게 되는 경우가 많은데, 그 부분을 lint rule에 맞춰 일일히 타입을 지키는 것은 ROI(Return On Investment) 가 낮을 수 있습니다.
+- 그럴 때는 아래와 같이 override 를 설정하면 됩니다.
+
+```js
+{
+  overrides: [
+    {
+      "files": ["**/*.test.ts?(x)"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+      }
+    }
+  ]
+}
+```
+- 위 설정을 해석해보면 test 파일의 경우에는 암묵적인 any type 옵션을 끄겟다는 의미입니다.
+- files 안의 문자열은 [glob pattern](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns) 으로 [glob tester](https://www.digitalocean.com/community/tools/glob?comments=true&glob=%2A%2A%2F%2A.test.ts%3F%28x%29&matches=false&tests=%2F%2F%20This%20will%20match%20as%20it%20ends%20with%20%27.js%27&tests=ssda%2Fhello.test.tsx&tests=%2F%2F%20This%20won%27t%20match%21) 로 테스트 할 수 있습니다.
+
+# Editor 별 eslint, editoronfig 세팅
+
+아래 세팅을 통해서 에디터에서 특정 파일을 수정하고 저장할 때 자동으로 `lint --fix` 가 작동하고, tab size, eof와 같은 에디터 설정도 editorconfig 에 파일에 명시된 대로 overriding 합니다. 따라서 vscode, webstorm 등 에디터와 무관하게 동일한 코드를 생산할 수 있습니다.
+## 1.vscode
 ### 1) vscdoe editorconfig
 - [editorconfig for vs code plugin](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)을 설치해주시면 됩니다. 별도의 설정은 필요 없습니다.
 ![image](https://user-images.githubusercontent.com/35516239/112944158-6d87a100-916d-11eb-8d30-36e8f89c9761.png)
 
-### 2) vscode eslint 설정 
-- [vscode eslint plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 을 설치합니다. 
-- worksapce 중 client 폴더에만 eslint rule이 적용되도록 세팅합니다. 이 설정이 없으면 root 폴더를 기준으로 eslint 를 검사하기 때문에, client에만 설정파일이 있는 경우에 해당 extension이 제대로 작동하지 않습니다. (이 세팅은 user setting 이 아닌 workspace 세팅이 필요합니다.) 
+### 2) vscode eslint 설정
+- [vscode eslint plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 을 설치합니다.
+- worksapce 중 client 폴더에만 eslint rule이 적용되도록 세팅합니다. 이 설정이 없으면 root 폴더를 기준으로 eslint 를 검사하기 때문에, client에만 설정파일이 있는 경우에 해당 extension이 제대로 작동하지 않습니다. (이 세팅은 user setting 이 아닌 workspace 세팅이 필요합니다.)
 - root folder에 `.vscode` 폴더를 만들고 해당 폴더 아래에 `.setting.json` 만들고 아래 내용을 붙여넣습니다.
 ```json
 {
 	"eslint.workingDirectories": [ "./client" ],
 }
 ```
-
 ![image](https://user-images.githubusercontent.com/35516239/112945259-04a12880-916f-11eb-8332-e440e118b75c.png)
-
 - `cmd + shift + p` -> `setting.json` 타이핑 -> `open setting.json` 을 선택합니다.
 ![image](https://user-images.githubusercontent.com/35516239/112944614-09b1a800-916e-11eb-81b8-4cac5f00909a.png)
 - 열려있는 user.setting.json 에 하기 설정을 적용합니다. 파일 저장시에 자동으로 eslint autofix 가 되도록 하는 세팅입니다. 
@@ -288,7 +310,6 @@ module.exports = {
   },
 }
 ```
-
 - 이제 아래 처럼 vscode가 lint 이슈에 밑줄을 그어주고, 저장할 경우 lint fix를 auto fix가 가능한 부분은  자동 수정을 해줍니다.
 ![image](https://user-images.githubusercontent.com/35516239/112945895-d40dbe80-916f-11eb-87be-1a0d05f3a808.png)
 
