@@ -164,7 +164,7 @@ module.exports = {
     "react/button-has-type": "warn",
 
     // import
-    "import/no-cycle": "off",
+    "import/no-cycle": "warn",
     "import/prefer-default-export": "off",
     // 테스트 코드에 있는 dependencies를 dev로 옮기라고 경고 뜨는 이슈를 해결하기 위함
     // https://github.com/banksalad/styleguide/pull/35#discussion_r603753937
@@ -198,7 +198,6 @@ module.exports = {
     "import/extensions": [".js", ".ts", ".mjs", ".jsx", ".tsx"]
   }
 };
-
 ```
 ## 5. style guide 적용
 ```json
