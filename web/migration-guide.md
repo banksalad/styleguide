@@ -315,7 +315,7 @@ module.exports = {
 
 ## 2. webstorm 
 ### 1) webstorm editor config 설정  
-- editorconfig 가 webstorm으 code style을 overrride 할 수 있도록 설정합니다.
+- editorconfig 가 webstorm의 code style을 override 할 수 있도록 설정합니다.
 ![image](https://user-images.githubusercontent.com/35516239/112961269-2d7de980-9180-11eb-993b-551f6cfe749a.png)
 
 ### 2) eslint 설정
