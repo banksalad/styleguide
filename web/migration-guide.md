@@ -7,8 +7,8 @@
 ### 2) 서버 코드는 react 코드가 아닌데 어떤 lint 룰을 적용해야 하는가?
 - 일단 서버코드는 현재 rule을 그대로 적용하고, client 코드에만 airbnb 룰을 적용하려 합니다.
 - airbnb style guide는 리엑트 rule을 포함하고 있어 express server 쪽 lint 세팅에는 적합하지 않습니다.
-- 따라서 server 쪽에 대한 lint를 어떻게 가져가야 할지 제쳐두고 client 폴더에 아래 설정을 진행합시다.(서버쪽에 대한 lint 세팅은 추후 논의를 통해 어떻게 할지 정하면 될 것 같고 우선순위가 높지는 않다고 판단했습니다.)
-
+- 따라서 server 쪽에 대한 lint는 기존 root 에 설정된 eslint rule을 따르게 하고, client 폴더에 eslint 설치 및 스타일 가이드 설정을 진행합니다.(서버쪽에 대한 lint 세팅은 추후 논의를 통해 어떻게 할지 정하면 될 것 같고 우선순위가 높지는 않다고 판단했습니다.), 이 세팅 변경으로 github action 에 CI 를 변경해야 하는데, 자세한 내용은 `5 style guide 적용 -> 4) CI 수정` 섹션에서 다루겠습니다.
+- web repo 중 별로로 별도로 server 폴더 없는 repo도 있습니다. e.g. [telecom-web](https://github.com/banksalad/telecom-web),이런 경우에는 root 폴더에 이 style guide를 적용하시면 됩니다.
 ### 3) 아래 세팅을 살펴보면 prettier 는 별도 실행되지 않는데 어떻게 된건가?
 - 아래 가이드 대로 세팅을 하면 `eslint --fix` 실행으로 lint 와 prettier를 같이 적용할 수 있습니다. 별도 prettier를 설정하지 않아도 됩니다.
 - `fyi`: `eslint-config-prettier` 와 `eslint-plugin-prettier`가  eslint 와 prettier를 통합해주는 역할을 합니다.
@@ -248,6 +248,55 @@ module.exports = {
 - 위 설정을 해석해보면 test 파일의 경우에는 암묵적인 any type 옵션을 끄겟다는 의미입니다.
 - files 안의 문자열은 [glob pattern](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns) 으로 [glob tester](https://www.digitalocean.com/community/tools/glob?comments=true&glob=%2A%2A%2F%2A.test.ts%3F%28x%29&matches=false&tests=%2F%2F%20This%20will%20match%20as%20it%20ends%20with%20%27.js%27&tests=ssda%2Fhello.test.tsx&tests=%2F%2F%20This%20won%27t%20match%21) 로 테스트 할 수 있습니다.
 
+### 4) CI 및 Npm script 확인
+#### (1) server 폴더가 없는 레포의 경우
+- 별도의 CI 수정이 필요없습니다. root 폴더에 style guide 설정만 적용해주시면 됩니다.
+#### (2) server 폴더가 있는 레포의 경우 
+-  root 폴더의 package.json root 에서 `npm run lint` 명령어를 수행하면 server 와, client 폴더에서 lint가 수행되어야 합니다.
+```json
+  "scripts": {
+     //...
+    "lint": "cd server && npm run lint && cd ../client && npm run lint",
+     //...
+  },
+```
+- CI 에서 Lint job을 수행할시 client 와 root에 모두 package 설치가 필요합니다.
+![image](https://user-images.githubusercontent.com/35516239/113546467-04010a00-9627-11eb-83d6-c27c84392824.png)
+```yml
+# ...
+jobs:
+  lint:
+    name: Lint
+    runs-on: [self-hosted, default]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 5
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.18.0'
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Install Dependencies - Root
+        run: npm install
+
+      - name: Install Dependencies - Client
+        run: npm install
+        working-directory: client
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_WEB_PACKAGES_TOKEN }}
+
+      - name: Check Lint
+        run: npm run lint
+# ...
+
+```
+
+
+
 # Editor 별 eslint, editoronfig 세팅
 
 아래 세팅을 통해서 에디터에서 특정 파일을 수정하고 저장할 때 자동으로 `lint --fix` 가 작동하고, tab size, eof와 같은 에디터 설정도 editorconfig 에 파일에 명시된 대로 overriding 합니다. 따라서 vscode, webstorm 등 에디터와 무관하게 동일한 코드를 생산할 수 있습니다.
@@ -258,11 +307,11 @@ module.exports = {
 
 ### 2) vscode eslint 설정
 - [vscode eslint plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 을 설치합니다.
-- worksapce 중 client 폴더에만 eslint rule이 적용되도록 세팅합니다. 이 설정이 없으면 root 폴더를 기준으로 eslint 를 검사하기 때문에, client에만 설정파일이 있는 경우에 해당 extension이 제대로 작동하지 않습니다. (이 세팅은 user setting 이 아닌 workspace 세팅이 필요합니다.)
-- root folder에 `.vscode` 폴더를 만들고 해당 폴더 아래에 `.setting.json` 만들고 아래 내용을 붙여넣습니다.
+- workspace 중 client 폴더에만 eslint rule이 적용되도록 세팅합니다. 이 설정이 없으면 root 폴더를 기준으로 eslint 를 검사하기 때문에, client에만 설정파일이 있는 경우에 해당 extension이 제대로 작동하지 않습니다. (이 세팅은 user setting 이 아닌 workspace 세팅이 필요합니다.)
+- root folder에 `.vscode` 폴더를 만들고 해당 폴더 아래에 `.setting.json` 만들고 아래 내용을 붙여넣습니다. (server 폴더가 별도 없는 repo의 경우 이 설정을 별도 진행하지 않으셔도 됩니다.)
 ```json
 {
-	"eslint.workingDirectories": [ "./client" ],
+	"eslint.workingDirectories": [ "./client, ./server" ],
 }
 ```
 ![image](https://user-images.githubusercontent.com/35516239/112945259-04a12880-916f-11eb-8332-e440e118b75c.png)
