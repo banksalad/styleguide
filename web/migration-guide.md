@@ -65,7 +65,7 @@ module.exports = {
 ```
 
 ## 3. editorconfig 설정
-- .editorconfg 파일을 만들고 아래 내용을 붙여넣기 합니다.
+- .editorconfig 파일을 만들고 아래 내용을 붙여넣기 합니다.
 ```
 # reference: https://github.com/airbnb/javascript/blob/master/.editorconfig
 root = true
