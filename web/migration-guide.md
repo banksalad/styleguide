@@ -107,6 +107,7 @@ module.exports = {
     browser: true,
     es2017: true,
   },
+  root: true,
   extends: [
     "airbnb",
     "airbnb/hooks",
