@@ -11,6 +11,7 @@ module.exports = {
       jsx: true,
     },
   },
+  root: true,
   env: {
     browser: true,
     es2017: true,
