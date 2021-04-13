@@ -45,7 +45,7 @@
 - 위 처럼 package.json devDependency에 추가한 뒤 등록한 패키지를 설치하기 위해 `npm install` 을 해줍시다.
 
 ## 2. prettier 설정
-- `.prettierc.js` 파일을 만들고 아래와 같이 세팅해줍니다. 참고([PR](https://github.com/banksalad/styleguide/pull/35))
+- `.prettierrc.js` 파일을 만들고 아래와 같이 세팅해줍니다. 참고([PR](https://github.com/banksalad/styleguide/pull/35))
 ```js
 module.exports = {
   "$schema": "http://json.schemastore.org/prettierrc",
