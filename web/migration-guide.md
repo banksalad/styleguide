@@ -79,10 +79,6 @@ insert_final_newline = true
 end_of_line = lf
 # editorconfig-tools is unable to ignore longs strings or urls
 max_line_length = off
-
-[*.md]
-max_line_length = 0
-trim_trailing_whitespace = false
 ```
 
 ## 4. eslint 설정
