@@ -1,5 +1,5 @@
 /*
- reference: https://github.com/Parker-Ledoux/prettier-airbnb-config
+  reference: https://github.com/Parker-Ledoux/prettier-airbnb-config
 */
 module.exports = {
   "$schema": "http://json.schemastore.org/prettierrc",
