@@ -1,5 +1,5 @@
 /*
- reference: https://github.com/toshi-toma/eslint-config-airbnb-typescript-prettier
+  reference: https://github.com/toshi-toma/eslint-config-airbnb-typescript-prettier
 */
 module.exports = {
   parser: "@typescript-eslint/parser",
