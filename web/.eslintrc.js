@@ -71,6 +71,10 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "react/no-array-index-key": "warn",
     "react/button-has-type": "warn",
+    // reference: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
+    // react 17이상 버전을 쓴다면 아래 주석을 해제하세요.
+    // "react/jsx-uses-react": "off",
+    // "react/react-in-jsx-scope": "off"
 
     // import
     "import/no-cycle": "warn",
