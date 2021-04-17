@@ -83,6 +83,13 @@ max_line_length = off
 
 ## 4. eslint 설정
 - `.eslintrc.js` 파일을 만들고 아래와 같이 세팅해줍니다.
+-  react 17 버전을 쓴다면 아래 코드 부분을 꼭 참고해서 주석을 해제 부탁드립니다. 
+```js
+    // reference: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
+    // react 17이상 버전을 쓴다면 아래 주석을 해제하세요.
+    // "react/jsx-uses-react": "off",
+    // "react/react-in-jsx-scope": "off"
+```
 ```js
 /*
  reference: https://github.com/toshi-toma/eslint-config-airbnb-typescript-prettier
@@ -157,12 +164,10 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "react/no-array-index-key": "warn",
     "react/button-has-type": "warn",
-    /*
-       react 17이상 버전을 쓴다면 아래 주석을 해제하세요.
-       reference: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
-    */
-    //"react/jsx-uses-react": "off",
-    //"react/react-in-jsx-scope": "off"
+    // reference: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
+    // react 17이상 버전을 쓴다면 아래 주석을 해제하세요.
+    // "react/jsx-uses-react": "off",
+    // "react/react-in-jsx-scope": "off"
 
     // import
     "import/no-cycle": "warn",
