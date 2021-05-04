@@ -8,7 +8,7 @@
 - 일단 서버코드는 현재 rule을 그대로 적용하고, client 코드에만 airbnb 룰을 적용하려 합니다.
 - airbnb style guide는 리엑트 rule을 포함하고 있어 express server 쪽 lint 세팅에는 적합하지 않습니다.
 - 따라서 server 쪽에 대한 lint는 기존 root 에 설정된 eslint rule을 따르게 하고, client 폴더에 eslint 설치 및 스타일 가이드 설정을 진행합니다.(서버쪽에 대한 lint 세팅은 추후 논의를 통해 어떻게 할지 정하면 될 것 같고 우선순위가 높지는 않다고 판단했습니다.), 이 세팅 변경으로 github action 에 CI 를 변경해야 하는데, 자세한 내용은 `5 style guide 적용 -> 4) CI 수정` 섹션에서 다루겠습니다.
-- web repo 중 별로로 별도로 server 폴더 없는 repo도 있습니다. e.g. [telecom-web](https://github.com/banksalad/telecom-web),이런 경우에는 root 폴더에 이 style guide를 적용하시면 됩니다.
+- web repo 중 별로로 별도로 server 폴더 없는 repo도 있습니다. e.g. [telecom-web](https://github.com/banksalad/telecom-web), next로 작성된 [useronboarding-web](https://github.com/banksalad/useronboarding-web) 이런 경우에는 root 폴더에 이 style guide를 적용하시면 됩니다.
 ### 3) 아래 세팅을 살펴보면 prettier 는 별도 실행되지 않는데 어떻게 된건가?
 - 아래 가이드 대로 세팅을 하면 `eslint --fix` 실행으로 lint 와 prettier를 같이 적용할 수 있습니다. 별도 prettier를 설정하지 않아도 됩니다.
 - `fyi`: `eslint-config-prettier` 와 `eslint-plugin-prettier`가  eslint 와 prettier를 통합해주는 역할을 합니다.
@@ -83,7 +83,7 @@ max_line_length = off
 
 ## 4. eslint 설정
 - `.eslintrc.js` 파일을 만들고 아래와 같이 세팅해줍니다.
--  react 17 버전을 쓴다면 아래 코드 부분을 꼭 참고해서 주석을 해제 부탁드립니다. 
+-  react 17 버전을 쓴다면(next 로 레포세팅을 진행하신 다면) 아래 코드 부분을 꼭 참고해서 주석을 해제 부탁드립니다. 
 ```js
     // reference: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
     // react 17이상 버전을 쓴다면 아래 주석을 해제하세요.
@@ -186,6 +186,10 @@ module.exports = {
         tsx: "never",
       },
     ],
+
+    // simple-import-sort
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   },
 
   settings: {
