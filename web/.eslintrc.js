@@ -93,6 +93,10 @@ module.exports = {
         tsx: "never",
       },
     ],
+
+    // simple-import-sort
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   },
 
   settings: {
