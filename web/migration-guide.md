@@ -121,7 +121,20 @@ module.exports = {
   globals: {},
   rules: {
     // prettier
-    "prettier/prettier": ["error"],
+    "prettier/prettier": ["error", {  
+      "arrowParens": "avoid",
+      "bracketSpacing": true,
+      "jsxBracketSameLine": false,
+      "jsxSingleQuote": false,
+      "printWidth": 100,
+      "proseWrap": "always",
+      "quoteProps": "as-needed",
+      "semi": true,
+      "singleQuote": true,
+      "tabWidth": 2,
+      "trailingComma": "es5",
+      "useTabs": false
+  }],
 
     // TypeScript
     "@typescript-eslint/ban-ts-comment": "off",
