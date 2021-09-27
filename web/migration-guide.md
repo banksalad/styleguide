@@ -38,7 +38,7 @@
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-react": "7.23.1",
     "eslint-plugin-react-hooks": "4.2.0",
-    "eslint-plugin-simple-import-sort": "5.0.3",
+    "eslint-plugin-simple-import-sort": "7.0.0",
   },
 }
 ```
@@ -83,7 +83,7 @@ max_line_length = off
 
 ## 4. eslint 설정
 - `.eslintrc.js` 파일을 만들고 아래와 같이 세팅해줍니다.
--  react 17 버전을 쓴다면(next 로 레포세팅을 진행하신 다면) 아래 코드 부분을 꼭 참고해서 주석을 해제 부탁드립니다. 
+-  react 17 버전을 쓴다면(next 로 레포세팅을 진행하신 다면) 아래 코드 부분을 꼭 참고해서 주석을 해제 부탁드립니다.
 ```js
     // reference: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
     // react 17이상 버전을 쓴다면 아래 주석을 해제하세요.
@@ -224,7 +224,7 @@ module.exports = {
 
 ## 6. eslint auto fix 가 안되는 부분 해결
 ### 1) 1개의 rule 만 어긋나서 즉시 수정이 가능한 경우
-- `"eslint src --fix` 로 auto fix를 했으나, 아래의 예시처럼 auto fix 가 되지 않는 부분이 있습니다. 이 부분은 직접 고쳐주셔야 합니다. 해당 rule을 참고하여 직접 고치셔야 합니다. 
+- `"eslint src --fix` 로 auto fix를 했으나, 아래의 예시처럼 auto fix 가 되지 않는 부분이 있습니다. 이 부분은 직접 고쳐주셔야 합니다. 해당 rule을 참고하여 직접 고치셔야 합니다.
 ![image](https://user-images.githubusercontent.com/35516239/112939766-fea74980-9166-11eb-9b58-3949cd32de7b.png)
 - e.g. 저의 경우에는 array method(map, filter, some, every etc)의 callback 함수에 명시적인 return 함수가 없어서 발생하는 문제여서 `return false` 를 추가해서 직접 수정했습니다.
 
@@ -261,7 +261,7 @@ module.exports = {
 ### 4) CI 및 Npm script 확인
 #### (1) server 폴더가 없는 레포의 경우
 - 별도의 CI 수정이 필요없습니다. root 폴더에 style guide 설정만 적용해주시면 됩니다.
-#### (2) server 폴더가 있는 레포의 경우 
+#### (2) server 폴더가 있는 레포의 경우
 -  root 폴더의 package.json root 에서 `npm run lint` 명령어를 수행하면 server 와, client 폴더에서 lint가 수행되어야 합니다.
 ```json
   "scripts": {
@@ -327,7 +327,7 @@ jobs:
 ![image](https://user-images.githubusercontent.com/35516239/112945259-04a12880-916f-11eb-8332-e440e118b75c.png)
 - `cmd + shift + p` -> `setting.json` 타이핑 -> `open setting.json` 을 선택합니다.
 ![image](https://user-images.githubusercontent.com/35516239/112944614-09b1a800-916e-11eb-81b8-4cac5f00909a.png)
-- 열려있는 user.setting.json 에 하기 설정을 적용합니다. 파일 저장시에 자동으로 eslint autofix 가 되도록 하는 세팅입니다. 
+- 열려있는 user.setting.json 에 하기 설정을 적용합니다. 파일 저장시에 자동으로 eslint autofix 가 되도록 하는 세팅입니다.
 ```json
 {
   "eslint.alwaysShowStatus": true,
@@ -371,8 +371,8 @@ jobs:
 - 이제 아래 처럼 vscode가 lint 이슈에 밑줄을 그어주고, 저장할 경우 lint fix를 auto fix가 가능한 부분은  자동 수정을 해줍니다.
 ![image](https://user-images.githubusercontent.com/35516239/112945895-d40dbe80-916f-11eb-87be-1a0d05f3a808.png)
 
-## 2. webstorm 
-### 1) webstorm editor config 설정  
+## 2. webstorm
+### 1) webstorm editor config 설정
 - editorconfig 가 webstorm의 code style을 override 할 수 있도록 설정합니다.
 ![image](https://user-images.githubusercontent.com/35516239/112961269-2d7de980-9180-11eb-993b-551f6cfe749a.png)
 
