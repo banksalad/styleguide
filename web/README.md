@@ -835,18 +835,18 @@ const COLOR_THEME = {
 
 ### Enum
 
-Enum은 Upper case를 따른다.  
-Enum으로 선언된 각 constant도 Upper case를 따른다.
+Enum은 Pascal case를 따른다.  
+Enum으로 선언된 각 constant도 Pascal case를 따른다.
 
 ```javascript
-enum APPLICATION_ENV {
-  PRODUCTION = 'production',
-  DEVELOPMENT = 'development',
+enum ApplicationEnv {
+  Production = 'production',
+  Development = 'development',
 }
 
-enum DIRECTION {
-  NORTH_WEST,
-  SOUTE_EAST,
+enum Direction {
+  NorthWest,
+  SouthEast,
 }
 ```
 
