@@ -23,7 +23,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:import/typescript",
   ],
-  plugins: ["react", "jsx-a11y", "import", "prettier", "@typescript-eslint", "simple-import-sort",],
+  plugins: ["react", "jsx-a11y", "import", "prettier", "@typescript-eslint", "simple-import-sort"],
   ignorePatterns: [".eslintrc.js", "webpack.config.js"],
   globals: {},
   rules: {
@@ -73,6 +73,7 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "react/no-array-index-key": "warn",
     "react/button-has-type": "warn",
+    "react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
     // reference: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
     // react 17이상 버전을 쓴다면 아래 주석을 해제하세요.
     // "react/jsx-uses-react": "off",
@@ -83,7 +84,7 @@ module.exports = {
     "import/prefer-default-export": "off",
     // 테스트 코드에 있는 dependencies를 dev로 옮기라고 경고 뜨는 이슈를 해결하기 위함
     // https://github.com/banksalad/styleguide/pull/35#discussion_r603753937
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["/**/*.ts?(x)"]}],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["/**/*.ts?(x)"] }],
     "import/extensions": [
       "error",
       "ignorePackages",
