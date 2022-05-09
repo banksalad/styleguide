@@ -69,7 +69,7 @@ module.exports = {
     "react/require-default-props": "off",
     "react/jsx-filename-extension": ["error", { extensions: [".tsx"] }],
     "react/prop-types": "off",
-    "react-hooks/exhaustive-deps": "off",
+    "react-hooks/exhaustive-deps": "error",
     "react/jsx-props-no-spreading": "off",
     "react/no-array-index-key": "warn",
     "react/button-has-type": "warn",
@@ -83,7 +83,7 @@ module.exports = {
     "import/prefer-default-export": "off",
     // 테스트 코드에 있는 dependencies를 dev로 옮기라고 경고 뜨는 이슈를 해결하기 위함
     // https://github.com/banksalad/styleguide/pull/35#discussion_r603753937
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["/**/*.ts?(x)"]}],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["/**/*.ts?(x)"] }],
     "import/extensions": [
       "error",
       "ignorePackages",
