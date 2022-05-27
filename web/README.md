@@ -1,7 +1,7 @@
 # Banksalad Web Style Guide
 
-Banksalad 웹팀 구성원을 위한 전반적인 코드 스타일 가이드입니다.  
-JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을 포함하고 있습니다.  
+Banksalad 웹팀 구성원을 위한 전반적인 코드 스타일 가이드입니다.
+JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을 포함하고 있습니다.
 
 
 ## 규칙 정의
@@ -12,50 +12,53 @@ JavaScript 코드 작성 규칙과 네이밍 규칙, 파일 import 규칙 등을
 
 
 ## 목차
-- [General Rules](#general-rules)
-  - [Files should end with a trailing newline](#files-should-end-with-a-trailing-newline)
-  - [No Empty File](#no-empty-file)
-  - [Indentation](#indentation)
-  - [Single quotes](#single-quotes)
-- [JavaScript Rules](#javascript-rules)
-  - [Trailing commas](#trailing-commas)
-  - [Line length 100](#line-length-100)
-  - [No multiple empty lines](#no-multiple-empty-lines)
-  - [Line break](#line-break)
-    - [Conditional statements](#conditional-statements)
-    - [If-else](#if-else)
-    - [Ternary operator](#ternary-operator)
-    - [Array & Object](#array-&-Object)
-    - [Arrays bracket newline](#arrays-bracket-newline)
-    - [Function Parameters](#function-parameters)
-  - [Semicolon](#semicolon)
-  - [Padding lines between statements](#padding-lines-between-statements)
-  - [Comma spacing](#comma-spacing)
-  - [Object curly spacing](#object-curly-spacing)
-  - [Spacing around infix operators](#spacing-around-infix-operators)
-  - [Function declaration](#function-declaration)
-- [React Rules](#react-rules)
-  - [Whitespace in and around the JSX opening and closing brackets](#whitespace-in-and-around-the-jsx-opening-and-closing-brackets)
-- [CSS Rules](#css-rules)
-  - [CSS Shorthand](#css-shorthand)
-  - [CSS Sort](#css-sort)
-- [Naming Rules](#naming-rules)
-  - [Variables](#variables)
-  - [Name attribute](#name-attribute)
-  - [Id](#id)
-  - [Class Name](#class-name)
-  - [Constants](#constants)
-  - [Enum](#enum)
-  - [Interface](#interface)
-  - [Folder/File Name](#folderfile-name)
-  - [Url path](#url-path)
-  - [Abbreviation](#abbreviation)
-- [File Import Rules](#file-import-rules)
-  - [Absolute path import](#absolute-path-import)
-  - [Newline after import](#newline-after-import)
-  - [Import order](#import-order)
-  - [Style import](#style-import)
-  - [Image import](#image-import)
+- [Banksalad Web Style Guide](#banksalad-web-style-guide)
+  - [규칙 정의](#규칙-정의)
+  - [목차](#목차)
+  - [General Rules](#general-rules)
+    - [Files should end with a trailing newline](#files-should-end-with-a-trailing-newline)
+    - [No Empty File](#no-empty-file)
+    - [Indentation](#indentation)
+    - [Single quotes](#single-quotes)
+  - [JavaScript Rules](#javascript-rules)
+    - [Trailing commas](#trailing-commas)
+    - [Line length 100](#line-length-100)
+    - [No multiple empty lines](#no-multiple-empty-lines)
+    - [Line break](#line-break)
+      - [Conditional statements](#conditional-statements)
+      - [If-else](#if-else)
+      - [Ternary operator](#ternary-operator)
+      - [Array & Object](#array--object)
+      - [Arrays Bracket Newline](#arrays-bracket-newline)
+      - [Function Parameters](#function-parameters)
+    - [Semicolon](#semicolon)
+    - [Padding lines between statements](#padding-lines-between-statements)
+    - [Comma spacing](#comma-spacing)
+    - [Object curly spacing](#object-curly-spacing)
+    - [Spacing around infix operators](#spacing-around-infix-operators)
+    - [Function declaration](#function-declaration)
+  - [React Rules](#react-rules)
+    - [Whitespace in and around the JSX opening and closing brackets](#whitespace-in-and-around-the-jsx-opening-and-closing-brackets)
+  - [CSS Rules](#css-rules)
+    - [CSS Shorthand](#css-shorthand)
+    - [CSS Sort](#css-sort)
+  - [Naming Rules](#naming-rules)
+    - [Variables](#variables)
+    - [Name attribute](#name-attribute)
+    - [Id](#id)
+    - [Class Name](#class-name)
+    - [Constants](#constants)
+    - [Enum](#enum)
+    - [Interface](#interface)
+    - [Folder/File Name](#folderfile-name)
+    - [Url path](#url-path)
+    - [Abbreviation](#abbreviation)
+  - [File Import Rules](#file-import-rules)
+    - [Import order](#import-order)
+    - [Newline after import](#newline-after-import)
+    - [Absolute path import](#absolute-path-import)
+    - [Style import](#style-import)
+    - [Image import](#image-import)
 
 ----------------------
 
@@ -107,7 +110,7 @@ function foo() {
 
 ### Single quotes
 
-모든 경우에 single quotation(')을 사용한다. backtick(`)은 [Template literal](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)을 사용하는 경우에만 허용된다.  
+모든 경우에 single quotation(')을 사용한다. backtick(`)은 [Template literal](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)을 사용하는 경우에만 허용된다.
 
 ```javascript
 // bad
@@ -197,7 +200,7 @@ var arr = [
 
 ### Line length 100
 
-코드는 주석을 포함하여 한 줄 당 최대 100자 이하로 작성한다. (url은 제외한다.)  
+코드는 주석을 포함하여 한 줄 당 최대 100자 이하로 작성한다. (url은 제외한다.)
 너무 긴 변수명과 함수명을 지양하며, 한 줄에 길게 쓰는 대신 여러 줄로 분리하여 코드의 가독성을 높인다.
 
 ```javascript
@@ -208,7 +211,7 @@ if (thisIsLongVariableName !== HelloWorld.longName.longName && thisIsLongVariabl
 
 ### No multiple empty lines
 
-코드내에서 한 줄 이상의 여백을 허용하지 않습니다. 
+코드내에서 한 줄 이상의 여백을 허용하지 않습니다.
 
 ```javascript
 // bad
@@ -231,7 +234,7 @@ var b = 2;
 
 #### Conditional statements
 
-조건식이 100자를 초과하거나 가독성이 떨어진다고 생각된다면, 조건식을 변수에 담고 아래 예시와 같이 줄바꿈하여 사용한다.  
+조건식이 100자를 초과하거나 가독성이 떨어진다고 생각된다면, 조건식을 변수에 담고 아래 예시와 같이 줄바꿈하여 사용한다.
 
 ```javascript
 // bad
@@ -479,7 +482,7 @@ var arr = [1, 2];
 
 ### Object curly spacing
 
-Object literal이나 destructuring assignments, import/export specifiers에 쓰이는 괄호(curly braces: `{}`) 안에 space를 꼭 넣는다.  
+Object literal이나 destructuring assignments, import/export specifiers에 쓰이는 괄호(curly braces: `{}`) 안에 space를 꼭 넣는다.
 다만 괄호가 중복되는 경우 space를 제거한다.
 
 ```javascript
@@ -770,7 +773,7 @@ CSS 속성 정렬은 다음과 같은 순서를 따른다.
   - ::after
 
 
-> Box model 범주에 속하는 속성들은 밖에서 안으로 향하는 순서(From outside in)로 나열한다.  
+> Box model 범주에 속하는 속성들은 밖에서 안으로 향하는 순서(From outside in)로 나열한다.
 > 원래대로라면 border 속성도 Box model 범주에 포함시켜야하겠지만, border 영역은 두께만 단독으로 선언하지 않고 색상(Color)을 함께 선언하는 경우가 대부분이므로 Color 범주로 포함시킨다.
 
 ----------------------
@@ -809,7 +812,7 @@ let targetName = 'hello';
 
 ### Class Name
 
-Class name은 Camel case를 따른다.  
+Class name은 Camel case를 따른다.
 
 ```jsx
 <div className={ s.headerData }></div>
@@ -835,7 +838,7 @@ const COLOR_THEME = {
 
 ### Enum
 
-Enum은 Pascal case를 따른다.  
+Enum은 Pascal case를 따른다.
 Enum으로 선언된 각 constant도 Pascal case를 따른다.
 
 ```javascript
@@ -864,7 +867,7 @@ interface ExampleProps {
 
 ### Folder/File Name
 
-폴더와 파일 이름은 하이픈`-`과 함께 Kebab case를 따르며 영문 소문자만 사용한다.  
+폴더와 파일 이름은 하이픈`-`과 함께 Kebab case를 따르며 영문 소문자만 사용한다.
 Test파일 폴더 이름은 예외적으로 `__tests__`를 사용한다.
 
 ```
@@ -923,7 +926,7 @@ const sendUIEvent = function() {
 ## File Import Rules
 ### Import order
 
-파일을 import할 때는 `npm packages/Node.js builtins`와 `절대 경로 import`, `상대 경로 import`를 group화하여 분류하고 사이 사이에 빈 줄로 구분한다.  
+파일을 import할 때는 `npm packages/Node.js builtins`와 `절대 경로 import`, `상대 경로 import`를 group화하여 분류하고 사이 사이에 빈 줄로 구분한다.
 
 이 부분은 [eslint-plugin-simple-import-sort](https://www.npmjs.com/package/eslint-plugin-simple-import-sort) 플러그인 설치 후 lint 설정으로 적용 가능하며 [web-template-pizza](https://github.com/Rainist/web-template-pizza) 템플릿에 기본 설정되어있다.
 
@@ -975,7 +978,7 @@ var a = 1;
 
 ### Absolute path import
 
-2-depth를 넘어가는 경우 반드시 webpack alias 설정을 통해 절대 경로로 import한다.  
+2-depth를 넘어가는 경우 반드시 webpack alias 설정을 통해 절대 경로로 import한다.
 (webpack 설정 예시)
 
 ```javascript
