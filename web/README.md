@@ -880,6 +880,17 @@ left-arrow.png
 icon-home.jpg
 ```
 
+컴포넌트의 이름은 fully하게 작성하고 그 파일명은 디렉터리 이름에 따라 축약한다.
+
+```
+# Do
+# file name
+salad/finance/dashboard/button.tsx
+
+# component name
+export const SaladFinanceDashboardButton = () => { ... };
+```
+
 ### Url path
 
 url path는 Kebab case를 따른다.
