@@ -29,12 +29,12 @@ import com.rainist.banksalad2.R
 
 
 data class Rainist(
-    careerPageUrl: String,
+    corpPageUrl: String,
     banksaladPlayStoreUrl: String
 )
 
 val rainist = Rainist(
-    "https://career.banksalad.com/",
+    "https://corp.banksalad.com/",
     "https://play.google.com/store/apps/details?id=com.rainist.banksalad2"
 )
 ```
