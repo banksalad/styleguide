@@ -903,18 +903,18 @@ https://banksalad.com/cards/promotion/annual-fee
 
 ### Abbreviation
 
-변수나 함수명을 지을 때 약자는 대문자로 표기한다.
+변수나 함수명을 지을 때 약자는 camelCase 로 표기한다.
 
 ```javascript
 // bad
 const sampleUrl = 'https://banksalad.com/';
-const sendUiEvent = function() {
+const sendUIEvent = function() {
 
 };
 
 // good
 const sampleURL = 'https://banksalad.com/';
-const sendUIEvent = function() {
+const sendUiEvent = function() {
 
 };
 ```
